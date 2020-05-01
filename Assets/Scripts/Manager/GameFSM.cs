@@ -45,16 +45,6 @@ public class GameFSM
 
     public GameState GetState(GameStateType type)
     {
-        // returns state if it exists, 
-        // else null
-        /*
-        if (states.ContainsKey(type))
-            return states[type];
-        else
-            return null;
-            */
-        
-        //ik ben eigenwijs
         if (!states.ContainsKey(type))
         {
             return null;

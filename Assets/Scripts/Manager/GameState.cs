@@ -42,7 +42,6 @@ public class PlayState : GameState
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GameManager.Instance.trapTextObject.SetActive(true);
     }
     public override void Update()
     {
@@ -50,17 +49,10 @@ public class PlayState : GameState
         {
             GameManager.Instance.GotoPause();
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Player.Instance?.SetTrap();
-        }
-
-        GameManager.Instance.trapText.text = "Traps: " + Player.Instance.CurrentTraps.ToString();
     }
     public override void Exit()
     {
-        GameManager.Instance.trapTextObject.SetActive(false);
+        
     }
 }
 public class PauseState : GameState
