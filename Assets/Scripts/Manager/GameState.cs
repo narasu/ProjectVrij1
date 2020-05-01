@@ -20,7 +20,7 @@ public class MainMenuState : GameState
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
+        
     }
     public override void Update()
     {
