@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum GameStateType { MainMenu, Play, Pause, Win, Dead }
 
@@ -24,10 +25,11 @@ public class MainMenuState : GameState
     }
     public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
+        */
     }
     public override void Exit()
     {
@@ -45,10 +47,10 @@ public class PlayState : GameState
     }
     public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameManager.Instance.GotoPause();
-        }
+            
+        }*/
     }
     public override void Exit()
     {
@@ -67,8 +69,9 @@ public class PauseState : GameState
     }
     public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
             GameManager.Instance.GotoPlay();
+        */
     }
     public override void Exit()
     {

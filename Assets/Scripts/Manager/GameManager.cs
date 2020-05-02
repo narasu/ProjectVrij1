@@ -7,7 +7,6 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-
     public static GameManager Instance
     {
         get
@@ -26,13 +25,19 @@ public class GameManager : MonoBehaviour
     public GameObject winMenuObject;
 
     private GameFSM fsm;
+    private Controls controls = InputManager.Instance.controls;
 
     private void Awake()
     {
         fsm = new GameFSM();
         fsm.Initialize();
+
+        //controls.Game.Enable();
+
+        //controls.Game.Pause.performed += ctx => HandlePause();
     }
 
+    
     private void Start()
     {
         GotoMainMenu();
@@ -46,7 +51,7 @@ public class GameManager : MonoBehaviour
     //Start the scene (this method is called from UI onclick)
     public void StartLevel()
     {
-        //instantiate objects, set positions etc etc etc
+        //instantiate dynamic objects, set positions etc etc etc
     }
 
     //End the scene
@@ -55,9 +60,9 @@ public class GameManager : MonoBehaviour
         //reset positions, deactivate/destroy objects, return to initial state, etc etc etc
     }
 
-    public void QuitGame()
+    private void OnDisable()
     {
-        Application.Quit();
+        //controls.Game.Disable();
     }
 
     //Methods for switching to each state
