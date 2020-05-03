@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,9 +12,6 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (instance == null)
-                instance = FindObjectOfType<GameManager>();
-
             return instance;
         }
     }
@@ -25,19 +23,29 @@ public class GameManager : MonoBehaviour
     public GameObject winMenuObject;
 
     private GameFSM fsm;
-    private Controls controls = InputManager.Instance.controls;
+
 
     private void Awake()
     {
         fsm = new GameFSM();
         fsm.Initialize();
 
-        //controls.Game.Enable();
-
-        //controls.Game.Pause.performed += ctx => HandlePause();
+        instance = FindObjectOfType<GameManager>();
     }
 
-    
+    public void HandlePause()
+    {
+        if (fsm.CurrentStateType != GameStateType.Pause)
+        {
+            Debug.Log("Pausing");
+            GotoPause();
+        }
+        else
+        {
+            fsm.GotoState(fsm.PreviousStateType);
+        }
+    }
+
     private void Start()
     {
         GotoMainMenu();
@@ -58,11 +66,6 @@ public class GameManager : MonoBehaviour
     public void EndLevel()
     {
         //reset positions, deactivate/destroy objects, return to initial state, etc etc etc
-    }
-
-    private void OnDisable()
-    {
-        //controls.Game.Disable();
     }
 
     //Methods for switching to each state

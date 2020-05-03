@@ -41,11 +41,19 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""409557df-c4f9-4ef3-b19b-7c88e7f66c5d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""WASD"",
                     ""id"": ""f7cf7fcf-52c4-4071-8270-a557ac3ab95d"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -120,6 +128,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7232900d-5b92-48e8-8e4b-76896f03e2f0"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -185,6 +204,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_FirstPerson_Walk = m_FirstPerson.FindAction("Walk", throwIfNotFound: true);
         m_FirstPerson_Interact = m_FirstPerson.FindAction("Interact", throwIfNotFound: true);
         m_FirstPerson_Jump = m_FirstPerson.FindAction("Jump", throwIfNotFound: true);
+        m_FirstPerson_Look = m_FirstPerson.FindAction("Look", throwIfNotFound: true);
         // Focus
         m_Focus = asset.FindActionMap("Focus", throwIfNotFound: true);
         m_Focus_Newaction = m_Focus.FindAction("New action", throwIfNotFound: true);
@@ -243,6 +263,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_FirstPerson_Walk;
     private readonly InputAction m_FirstPerson_Interact;
     private readonly InputAction m_FirstPerson_Jump;
+    private readonly InputAction m_FirstPerson_Look;
     public struct FirstPersonActions
     {
         private @Controls m_Wrapper;
@@ -250,6 +271,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Walk => m_Wrapper.m_FirstPerson_Walk;
         public InputAction @Interact => m_Wrapper.m_FirstPerson_Interact;
         public InputAction @Jump => m_Wrapper.m_FirstPerson_Jump;
+        public InputAction @Look => m_Wrapper.m_FirstPerson_Look;
         public InputActionMap Get() { return m_Wrapper.m_FirstPerson; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -268,6 +290,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_FirstPersonActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_FirstPersonActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_FirstPersonActionsCallbackInterface.OnJump;
+                @Look.started -= m_Wrapper.m_FirstPersonActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_FirstPersonActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_FirstPersonActionsCallbackInterface.OnLook;
             }
             m_Wrapper.m_FirstPersonActionsCallbackInterface = instance;
             if (instance != null)
@@ -281,6 +306,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
             }
         }
     }
@@ -356,6 +384,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface IFocusActions
     {

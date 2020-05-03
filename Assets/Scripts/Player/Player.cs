@@ -11,39 +11,36 @@ public class Player : MonoBehaviour
     {
         get
         {
-            if (instance == null)
-                instance = FindObjectOfType<Player>();
-
             return instance;
         }
     }
 
     private PlayerFSM fsm;
 
-    private Controls controls;
 
     private void Awake()
     {
+        instance = FindObjectOfType<Player>();
+
         fsm = new PlayerFSM();
         fsm.Initialize();
 
-        controls = InputManager.Instance.controls;
-
-        controls.FirstPerson.Walk.performed += ctx => Walk();
-        controls.FirstPerson.Jump.performed += ctx => Jump();
-
-        // controls.Focus.***.performed += ctx => ***();
+        
     }
 
-    private void Jump()
+    public void Jump()
     {
         Debug.Log("Jump");
     }
 
-    private void Walk()
+    public void Walk(Vector2 movement)
     {
-        Vector2 movement = controls.FirstPerson.Walk.ReadValue<Vector2>();
         transform.Translate(movement);
+    }
+
+    public void Look(Vector2 mouseDelta)
+    {
+        Debug.Log(mouseDelta);
     }
 
     private void Start()
