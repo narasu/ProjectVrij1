@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            fsm.GotoState(fsm.PreviousStateType);
+            GotoPrevious();
         }
     }
 
@@ -89,5 +89,9 @@ public class GameManager : MonoBehaviour
     {
         fsm.GotoState(GameStateType.Dead);
     }
-
+    //switch to whatever state the game was previously in
+    public void GotoPrevious()
+    {
+        fsm.GotoState(fsm.PreviousStateType);
+    }
 }

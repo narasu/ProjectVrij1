@@ -9,7 +9,6 @@ public class GameFSM
 
     public GameStateType CurrentStateType { get; private set; }
     public GameStateType PreviousStateType { get; private set; }
-    public GameState PreviousState { get => previousState; }
 
     private GameState currentState;
     private GameState previousState;
