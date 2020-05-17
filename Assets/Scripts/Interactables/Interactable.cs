@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour, IPressable
 {
-    [Header("Sprites")]
+    /*[Header("Sprites")]
     public Sprite buttonPressSprite;
     public Sprite normalSprite;
     public Sprite highlightedSprite;
 
-    [HideInInspector] public SpriteRenderer spriteRenderer;
+    [HideInInspector] public SpriteRenderer spriteRenderer;*/
     protected InteractableFSM fsm;
 
     public Transform player;
 
     protected void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
 
         fsm = new InteractableFSM();
     }
@@ -42,6 +42,7 @@ public class Interactable : MonoBehaviour, IPressable
         if (fsm.CurrentStateType==InteractableStateType.Normal)
         {
             GotoHighlighted();
+            Debug.Log("hoi");
         }
     }
 

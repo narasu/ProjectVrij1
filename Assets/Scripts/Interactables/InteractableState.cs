@@ -24,7 +24,7 @@ public class NormalState : InteractableState
 {
     public override void Enter()
     {
-        interactable.spriteRenderer.sprite = interactable.normalSprite;
+        //interactable.spriteRenderer.sprite = interactable.normalSprite;
     }
     public override void Update()
     {
@@ -39,7 +39,7 @@ public class HighlightedState : InteractableState
 {
     public override void Enter()
     {
-        interactable.spriteRenderer.sprite = interactable.highlightedSprite;
+        //interactable.spriteRenderer.sprite = interactable.highlightedSprite;
     }
     public override void Update()
     {
