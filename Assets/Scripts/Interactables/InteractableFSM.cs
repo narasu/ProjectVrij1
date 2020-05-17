@@ -2,24 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFSM
+public class InteractableFSM
 {
-    public Player owner { get; private set; }
+    public Interactable owner { get; private set; }
 
-    private Dictionary<PlayerStateType, PlayerState> states;
 
-    public PlayerStateType CurrentStateType { get; private set; }
-    private PlayerState currentState;
-    private PlayerState previousState;
+    private Dictionary<InteractableStateType, InteractableState> states;
 
-    public void Initialize(Player owner)
+    public InteractableStateType CurrentStateType { get; private set; }
+    private InteractableState currentState;
+    private InteractableState previousState;
+
+    public void Initialize(Interactable owner)
     {
         this.owner = owner;
-        Debug.Log(owner);
-        states = new Dictionary<PlayerStateType, PlayerState>();
+
+        states = new Dictionary<InteractableStateType, InteractableState>();
+        
     }
 
-    public void AddState(PlayerStateType newType, PlayerState newState)
+    public void AddState(InteractableStateType newType, InteractableState newState)
     {
         states.Add(newType, newState);
         states[newType].Initialize(this);
@@ -30,7 +32,7 @@ public class PlayerFSM
         currentState?.Update();
     }
 
-    public void GotoState(PlayerStateType key)
+    public void GotoState(InteractableStateType key)
     {
         if (!states.ContainsKey(key))
         {
@@ -46,7 +48,7 @@ public class PlayerFSM
         currentState.Enter();
     }
 
-    public PlayerState GetState(PlayerStateType type)
+    public InteractableState GetState(InteractableStateType type)
     {
         if (!states.ContainsKey(type))
         {

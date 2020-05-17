@@ -1,0 +1,70 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum InteractableStateType { Normal, Highlighted, Interacting }
+
+public abstract class InteractableState
+{
+    protected InteractableFSM owner;
+    protected Interactable interactable;
+
+    public void Initialize(InteractableFSM owner)
+    {
+        this.owner = owner;
+        interactable = owner.owner;
+    }
+
+    public abstract void Enter();
+    public abstract void Update();
+    public abstract void Exit();
+}
+
+public class NormalState : InteractableState 
+{
+    public override void Enter()
+    {
+        interactable.spriteRenderer.sprite = interactable.normalSprite;
+    }
+    public override void Update()
+    {
+        
+    }
+    public override void Exit()
+    {
+        
+    }
+}
+public class HighlightedState : InteractableState
+{
+    public override void Enter()
+    {
+        interactable.spriteRenderer.sprite = interactable.highlightedSprite;
+    }
+    public override void Update()
+    {
+        if (Player.Instance.interacting)
+        {
+            interactable.GotoInteracting();
+        }
+    }
+    public override void Exit()
+    {
+
+    }
+}
+public class InteractingState : InteractableState
+{
+    public override void Enter()
+    {
+        interactable.HandleInteraction();
+    }
+    public override void Update()
+    {
+        
+    }
+    public override void Exit()
+    {
+        
+    }
+}

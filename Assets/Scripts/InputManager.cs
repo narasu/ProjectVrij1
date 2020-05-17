@@ -21,9 +21,16 @@ public class InputManager : MonoBehaviour
         instance = FindObjectOfType<InputManager>();
         controls = new Controls();
 
-        controls.FirstPerson.Walk.performed += ctx => Player.Instance.Walk(controls.FirstPerson.Walk.ReadValue<Vector2>());
+        controls.FirstPerson.Walk.started += ctx => Player.Instance.walkVector = controls.FirstPerson.Walk.ReadValue<Vector2>();
+        controls.FirstPerson.Walk.performed += ctx => Player.Instance.walkVector = controls.FirstPerson.Walk.ReadValue<Vector2>();
+        controls.FirstPerson.Walk.canceled += ctx => Player.Instance.walkVector = controls.FirstPerson.Walk.ReadValue<Vector2>();
+
         controls.FirstPerson.Jump.performed += ctx => Player.Instance.Jump();
-        controls.FirstPerson.Look.performed += ctx => Player.Instance.Look(controls.FirstPerson.Look.ReadValue<Vector2>());
+
+        controls.FirstPerson.Look.performed += ctx => PlayerLook.Instance.lookVector = controls.FirstPerson.Look.ReadValue<Vector2>();
+        controls.FirstPerson.Look.canceled += ctx => PlayerLook.Instance.lookVector = controls.FirstPerson.Look.ReadValue<Vector2>();
+
+        controls.FirstPerson.Interact.performed += ctx => Player.Instance.interacting = true;
         // controls.Focus.***.performed += ctx => ***();
 
         controls.Game.Pause.performed += ctx => GameManager.Instance.HandlePause();
