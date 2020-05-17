@@ -41,9 +41,10 @@ public class Interactable : MonoBehaviour, IPressable
     {
         if (fsm.CurrentStateType==InteractableStateType.Normal)
         {
-            GotoHighlighted();
             Debug.Log("hoi");
+            GotoHighlighted();
         }
+        
     }
 
     public virtual void HandleInteraction()
