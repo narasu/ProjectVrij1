@@ -2197,6 +2197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  NoiseEvent: event:/Noise
 --- !u!136 &2115301681
 CapsuleCollider:
   m_ObjectHideFlags: 0

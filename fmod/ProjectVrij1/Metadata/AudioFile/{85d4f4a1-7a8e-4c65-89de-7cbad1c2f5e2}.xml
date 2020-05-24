@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{85d4f4a1-7a8e-4c65-89de-7cbad1c2f5e2}">
+		<property name="assetPath">
+			<value>whitenoise_loop.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>29</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f510fb22-a3ad-49fc-adda-a2fcf81ffd29}</destination>
+		</relationship>
+	</object>
+</objects>

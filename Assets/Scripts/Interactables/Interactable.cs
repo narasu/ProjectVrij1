@@ -14,11 +14,16 @@ public class Interactable : MonoBehaviour, IPressable
 
     public Transform player;
 
+    //[FMODUnity.EventRef]
+    //public string NoiseEvent = "";
+    //FMOD.Studio.EventInstance noise;
+
     protected void Awake()
     {
         //spriteRenderer = GetComponent<SpriteRenderer>();
 
         fsm = new InteractableFSM();
+        //noise = FMODUnity.RuntimeManager.CreateInstance(NoiseEvent);
     }
 
     void Start()
@@ -42,6 +47,8 @@ public class Interactable : MonoBehaviour, IPressable
         if (fsm.CurrentStateType==InteractableStateType.Normal)
         {
             Debug.Log("hoi");
+            //FMODUnity.RuntimeManager.PlayOneShot(NoiseEvent, transform.position);
+            //noise.start();
             GotoHighlighted();
         }
         

@@ -33,6 +33,8 @@ public class InputManager : MonoBehaviour
         controls.FirstPerson.Interact.performed += ctx => Player.Instance.interacting = true;
         // controls.Focus.***.performed += ctx => ***();
 
+        //controls.FirstPerson.Switch.performed += ctx => Player.Instance.Switch();
+
         controls.Game.Pause.performed += ctx => GameManager.Instance.HandlePause();
     }
 
