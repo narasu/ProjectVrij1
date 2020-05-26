@@ -36,6 +36,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-8575240937269484283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: fmod/ProjectVrij1/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637260231145660341
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-8420673770470795305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: fmod/ProjectVrij1/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637259647335587099
+  lastModified: 637260231145670279
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -251,7 +269,8 @@ MonoBehaviour:
   Path: event:/Daytime Sunshine
   guid: a84aa11214547a44a93105c0886a46c8
   Banks:
-  - {fileID: 5361821237355102340}
+  - {fileID: 1122040695532489004}
+  - {fileID: -8575240937269484283}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -417,17 +436,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -8089028795957272837}
-  - {fileID: 5361821237355102340}
+  - {fileID: -8575240937269484283}
   EditorEvents:
   - {fileID: -3713742372342749403}
   - {fileID: 5590773533473151613}
   - {fileID: 713002699062739296}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 5361821237355102340}
+  - {fileID: -8575240937269484283}
   StringsBanks:
   - {fileID: -8089028795957272837}
-  stringsBankWriteTime: 637259647335587099
+  stringsBankWriteTime: 637260231145670279
   cacheVersion: 3
 --- !u!114 &14707924207232746
 MonoBehaviour:
@@ -480,7 +499,8 @@ MonoBehaviour:
   Path: event:/Noise
   guid: 1b99fece281a634b9c617d32ff05a9f0
   Banks:
-  - {fileID: 5361821237355102340}
+  - {fileID: 1122040695532489004}
+  - {fileID: -8575240937269484283}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -506,6 +526,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &1122040695532489004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: fmod/ProjectVrij1/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637260231145660341
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &1817430138991246706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,7 +671,8 @@ MonoBehaviour:
   Path: event:/Rain
   guid: f7856854007eb347b993df8a3b80e05b
   Banks:
-  - {fileID: 5361821237355102340}
+  - {fileID: 1122040695532489004}
+  - {fileID: -8575240937269484283}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0

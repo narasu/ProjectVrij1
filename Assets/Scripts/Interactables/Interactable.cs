@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour, IPressable
+public class Interactable : MonoBehaviour, IClickable
 {
     /*[Header("Sprites")]
     public Sprite buttonPressSprite;
@@ -12,7 +12,7 @@ public class Interactable : MonoBehaviour, IPressable
     [HideInInspector] public SpriteRenderer spriteRenderer;*/
     protected InteractableFSM fsm;
 
-    public Transform player;
+    //public Transform player;
 
     //[FMODUnity.EventRef]
     //public string NoiseEvent = "";
@@ -56,7 +56,7 @@ public class Interactable : MonoBehaviour, IPressable
 
     public virtual void HandleInteraction()
     {
-
+        Debug.Log("interacting");
     }
 
     public virtual void GotoNormal()

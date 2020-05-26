@@ -25,6 +25,8 @@ public class PlayerLook : MonoBehaviour
 
     private float xAxisClamp;
 
+    private Interactable target;
+
     private void Awake()
     {
         instance = this;
@@ -34,25 +36,15 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         CameraRotation();
-        /*
-        if (racyast hit teh thing)
-        {
-            thing.Highlight();
-        }
-        else
-        {
-            thing.GotoNormal();
-        }
-        */
- 
+        
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastDistance)) 
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             //Debug.Log("Did Hit");
-
-            
+            SetTarget(hit.transform.GetComponent<Interactable>());
+            Debug.Log(target);
             hit.transform.gameObject.GetComponent<Interactable>()?.Highlight();
 
         }
@@ -61,12 +53,6 @@ public class PlayerLook : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastDistance, Color.white);
             //Debug.Log("Did not Hit");
         }
-    }
-
-    private void LockCursor()
-    {
-        //hides and locks cursor
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void CameraRotation()
@@ -101,5 +87,20 @@ public class PlayerLook : MonoBehaviour
         eulerRotation.x = value;
         transform.eulerAngles = eulerRotation;
     }
-    
+
+    private void SetTarget(Interactable i)
+    {
+        target = i;
+    }
+
+    public Interactable GetTarget()
+    {
+        return target;
+    }
+
+    private void LockCursor()
+    {
+        //hides and locks cursor
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }

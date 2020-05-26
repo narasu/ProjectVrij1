@@ -21,7 +21,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject mainWorld;
     [SerializeField] private GameObject altWorld;
 
-    public bool interacting = false;
+    private Interactable lookingAt;
+    private Movable inHand;
+
 
     private CharacterController charController;
     [SerializeField] private float movementSpeed = 8.0f;
@@ -58,6 +60,7 @@ public class Player : MonoBehaviour
         Debug.Log("Jump");
     }
 
+    //player movement
     public void Walk()
     {
         //transform.Translate(movement);
@@ -67,13 +70,52 @@ public class Player : MonoBehaviour
 
         Vector3 movement = Vector3.Normalize(forwardMovement + rightMovement) * movementSpeed;
         charController.SimpleMove(movement);
-
     }
 
+    //mouseDelta is set by Look input event
     public void Look(Vector2 mouseDelta)
     {
         Debug.Log(mouseDelta);
+    }
 
+    //gets called on Interact input event. Interact with objects
+    public void Interact()
+    {
+        //does the player have something in hand? if so, drop
+        if (inHand != null)
+        {
+            inHand.Drop();
+            inHand = null;
+            return;
+        }
+
+        // is the player looking at a valid Interactable target?
+        lookingAt = PlayerLook.Instance.GetTarget();
+        if (lookingAt == null)
+            return;
+
+        //set target to interacting state
+        lookingAt.GotoInteracting();
+
+        //is the object movable? if so, grab
+        inHand = lookingAt.GetComponent<Movable>();
+        if (inHand != null)
+        {
+            inHand.Grab();
+        }
+    }
+
+    //gets called on Switch input event. Switch between normal and camera state
+    public void Switch()
+    {
+        if (fsm.CurrentStateType == PlayerStateType.FirstPerson)
+        {
+            GotoCamera();
+        }
+        if (fsm.CurrentStateType == PlayerStateType.Camera)
+        {
+            GotoFirstPerson();
+        }
     }
 
     public void EnableMainWorld()
