@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: fmod/ProjectVrij1/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637259647335587099
+  lastModified: 637261842514902292
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -251,7 +251,7 @@ MonoBehaviour:
   Path: event:/Daytime Sunshine
   guid: a84aa11214547a44a93105c0886a46c8
   Banks:
-  - {fileID: 5361821237355102340}
+  - {fileID: 3861589946686470694}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -417,17 +417,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -8089028795957272837}
-  - {fileID: 5361821237355102340}
+  - {fileID: 3861589946686470694}
   EditorEvents:
   - {fileID: -3713742372342749403}
   - {fileID: 5590773533473151613}
   - {fileID: 713002699062739296}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 5361821237355102340}
+  - {fileID: 3861589946686470694}
   StringsBanks:
   - {fileID: -8089028795957272837}
-  stringsBankWriteTime: 637259647335587099
+  stringsBankWriteTime: 637261842514902292
   cacheVersion: 3
 --- !u!114 &14707924207232746
 MonoBehaviour:
@@ -480,7 +480,7 @@ MonoBehaviour:
   Path: event:/Noise
   guid: 1b99fece281a634b9c617d32ff05a9f0
   Banks:
-  - {fileID: 5361821237355102340}
+  - {fileID: 3861589946686470694}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -546,6 +546,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 91252
+--- !u!114 &3861589946686470694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: fmod/ProjectVrij1/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637261842514892319
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &4153436547992087328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,7 +635,7 @@ MonoBehaviour:
   lastModified: 637259647335557293
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &5590773533473151613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,7 +651,7 @@ MonoBehaviour:
   Path: event:/Rain
   guid: f7856854007eb347b993df8a3b80e05b
   Banks:
-  - {fileID: 5361821237355102340}
+  - {fileID: 3861589946686470694}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
