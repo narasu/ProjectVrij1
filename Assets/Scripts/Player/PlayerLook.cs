@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     
-    private static PlayerLook instance;
+    public static PlayerLook instance;
     public static PlayerLook Instance
     {
         get
