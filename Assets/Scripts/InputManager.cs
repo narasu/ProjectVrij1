@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = FindObjectOfType<InputManager>();
+        instance = this;
         controls = new Controls();
 
         controls.FirstPerson.Walk.started += ctx => Player.Instance.walkVector = controls.FirstPerson.Walk.ReadValue<Vector2>();
@@ -30,10 +30,9 @@ public class InputManager : MonoBehaviour
         controls.FirstPerson.Look.performed += ctx => PlayerLook.Instance.lookVector = controls.FirstPerson.Look.ReadValue<Vector2>();
         controls.FirstPerson.Look.canceled += ctx => PlayerLook.Instance.lookVector = controls.FirstPerson.Look.ReadValue<Vector2>();
 
-        controls.FirstPerson.Interact.performed += ctx => Player.Instance.interacting = true;
-        // controls.Focus.***.performed += ctx => ***();
+        controls.FirstPerson.Interact.performed += ctx => Player.Instance.Interact();
 
-        //controls.FirstPerson.Switch.performed += ctx => Player.Instance.Switch();
+        controls.FirstPerson.Switch.performed += ctx => Player.Instance.Switch();
 
         controls.Game.Pause.performed += ctx => GameManager.Instance.HandlePause();
     }

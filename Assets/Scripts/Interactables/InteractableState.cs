@@ -43,10 +43,7 @@ public class HighlightedState : InteractableState
     }
     public override void Update()
     {
-        if (Player.Instance.interacting)
-        {
-            interactable.GotoInteracting();
-        }
+        
     }
     public override void Exit()
     {
@@ -57,11 +54,11 @@ public class InteractingState : InteractableState
 {
     public override void Enter()
     {
-        interactable.HandleInteraction();
+        
     }
     public override void Update()
     {
-        
+        interactable.HandleInteraction();
     }
     public override void Exit()
     {
