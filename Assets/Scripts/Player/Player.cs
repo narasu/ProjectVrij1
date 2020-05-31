@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
         }
     }
 
+
     //gets called on Switch input event. Switch between normal and camera state
     public void Switch()
     {

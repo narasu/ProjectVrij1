@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour, IClickable
     //public string NoiseEvent = "";
     //FMOD.Studio.EventInstance noise;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         //spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -56,7 +56,7 @@ public class Interactable : MonoBehaviour, IClickable
 
     public virtual void HandleInteraction()
     {
-        Debug.Log("interacting");
+        //Debug.Log("interacting");
     }
 
     public virtual void GotoNormal()
