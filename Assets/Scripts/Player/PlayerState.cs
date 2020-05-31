@@ -25,7 +25,6 @@ public class FirstPersonState : PlayerState
     public override void Enter()
     {
         //InputManager.Instance.controls.FirstPerson.Enable();
-
         player.EnableMainWorld();
     }
 
@@ -47,7 +46,6 @@ public class CameraState : PlayerState
     public override void Enter()
     {
         //InputManager.Instance.controls.FirstPerson.Enable();
-
         player.EnableAltWorld();
     }
 

@@ -112,10 +112,12 @@ public class Player : MonoBehaviour
         if (fsm.CurrentStateType == PlayerStateType.FirstPerson)
         {
             GotoCamera();
+            return;
         }
         if (fsm.CurrentStateType == PlayerStateType.Camera)
         {
             GotoFirstPerson();
+            return;
         }
     }
 
