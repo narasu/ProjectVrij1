@@ -22,6 +22,7 @@ public class Movable : Interactable
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            
         }
     }
 
@@ -40,7 +41,7 @@ public class Movable : Interactable
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         transform.parent = playerHand;
-        rb.position = Vector3.zero;
+        transform.localPosition = Vector3.zero;
         rb.useGravity = false;
     }
 
