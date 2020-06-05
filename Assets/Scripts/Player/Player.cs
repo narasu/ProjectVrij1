@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
@@ -27,8 +26,15 @@ public class Player : MonoBehaviour
 
     private CharacterController charController;
     [SerializeField] private float movementSpeed = 8.0f;
+    [HideInInspector] public Vector2 walkVector;
 
-    public Vector2 walkVector;
+    //Audio
+
+    [FMODUnity.EventRef] public string CameraOnEvent = "";
+    [FMODUnity.EventRef] public string CameraOffEvent = "";
+
+    FMOD.Studio.EventInstance cameraOn;
+    FMOD.Studio.EventInstance cameraOff;
 
     private void Awake()
     {
@@ -42,7 +48,8 @@ public class Player : MonoBehaviour
         fsm.AddState(PlayerStateType.FirstPerson, new FirstPersonState());
         fsm.AddState(PlayerStateType.Camera, new CameraState());
 
-        //InputManager.Instance.controls.FirstPerson.Enable();
+        cameraOn = FMODUnity.RuntimeManager.CreateInstance(CameraOnEvent);
+        cameraOff = FMODUnity.RuntimeManager.CreateInstance(CameraOffEvent);
     }
 
     private void Start()
@@ -111,11 +118,13 @@ public class Player : MonoBehaviour
     {
         if (fsm.CurrentStateType == PlayerStateType.FirstPerson)
         {
+            cameraOn.start();
             GotoCamera();
             return;
         }
         if (fsm.CurrentStateType == PlayerStateType.Camera)
         {
+            cameraOff.start();
             GotoFirstPerson();
             return;
         }
