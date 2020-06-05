@@ -25,6 +25,8 @@ public class PlayerLook : MonoBehaviour
 
     private float xAxisClamp;
 
+    private Interactable target;
+
     private void Awake()
     {
         instance = this;
@@ -34,25 +36,15 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         CameraRotation();
-        /*
-        if (racyast hit teh thing)
-        {
-            thing.Highlight();
-        }
-        else
-        {
-            thing.GotoNormal();
-        }
-        */
- 
+        SetTarget(null);
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastDistance)) 
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             //Debug.Log("Did Hit");
-
-            
+            SetTarget(hit.transform.GetComponent<Interactable>());
+            //Debug.Log(target);
             hit.transform.gameObject.GetComponent<Interactable>()?.Highlight();
 
         }
@@ -63,12 +55,6 @@ public class PlayerLook : MonoBehaviour
         }
     }
 
-    private void LockCursor()
-    {
-        //hides and locks cursor
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     private void CameraRotation()
     {
         //set mouse movement values
@@ -77,6 +63,7 @@ public class PlayerLook : MonoBehaviour
 
         xAxisClamp += mouseY;
 
+        //looking up
         if (xAxisClamp > 90.0f)
         {
             xAxisClamp = 90.0f;
@@ -84,11 +71,12 @@ public class PlayerLook : MonoBehaviour
             ClampXAxisRotationToValue(270.0f);
         }
 
-        if (xAxisClamp < -90.0f)
+        //looking down
+        if (xAxisClamp < -60.0f)
         {
-            xAxisClamp = -90.0f;
+            xAxisClamp = -60.0f;
             mouseY = 0.0f;
-            ClampXAxisRotationToValue(90.0f);
+            ClampXAxisRotationToValue(60.0f);
         }
 
         transform.Rotate(Vector3.left * mouseY);
@@ -101,5 +89,20 @@ public class PlayerLook : MonoBehaviour
         eulerRotation.x = value;
         transform.eulerAngles = eulerRotation;
     }
-    
+
+    private void SetTarget(Interactable i)
+    {
+        target = i;
+    }
+
+    public Interactable GetTarget()
+    {
+        return target;
+    }
+
+    private void LockCursor()
+    {
+        //hides and locks cursor
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }

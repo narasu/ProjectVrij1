@@ -25,17 +25,12 @@ public class FirstPersonState : PlayerState
     public override void Enter()
     {
         //InputManager.Instance.controls.FirstPerson.Enable();
-
         player.EnableMainWorld();
     }
 
     public override void Update()
     {
-        if (player.interacting)
-        {
-            player.GotoCamera();
-            player.interacting = false;
-        }
+        
 
         player.Walk();
     }
@@ -51,18 +46,11 @@ public class CameraState : PlayerState
     public override void Enter()
     {
         //InputManager.Instance.controls.FirstPerson.Enable();
-
         player.EnableAltWorld();
     }
 
     public override void Update()
     {
-        if (player.interacting)
-        {
-            player.GotoFirstPerson();
-            player.interacting = false;
-        }
-
         player.Walk();
     }
 
