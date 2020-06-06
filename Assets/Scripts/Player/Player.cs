@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private CharacterController charController;
     [SerializeField] private float movementSpeed = 8.0f;
     [HideInInspector] public Vector2 walkVector;
+    private Vector3 forwardMovement, rightMovement, movement;
 
     //Audio
 
@@ -72,10 +73,10 @@ public class Player : MonoBehaviour
     {
         //transform.Translate(movement);
 
-        Vector3 forwardMovement = transform.forward * walkVector.y;
-        Vector3 rightMovement = transform.right * walkVector.x;
+        forwardMovement = transform.forward * walkVector.y;
+        rightMovement = transform.right * walkVector.x;
 
-        Vector3 movement = Vector3.Normalize(forwardMovement + rightMovement) * movementSpeed;
+        movement = Vector3.Normalize(forwardMovement + rightMovement) * movementSpeed;
         charController.SimpleMove(movement);
     }
 
