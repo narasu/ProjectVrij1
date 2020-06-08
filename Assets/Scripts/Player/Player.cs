@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    [HideInInspector] public int worldState { get; private set; } // 0 for normal world, 1 for camera world
+
     private PlayerFSM fsm;
 
     [SerializeField] private GameObject mainWorld;
@@ -61,6 +63,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         fsm.UpdateState();
+
+        
     }
 
     public void Jump()
@@ -121,12 +125,14 @@ public class Player : MonoBehaviour
         {
             cameraOn.start();
             GotoCamera();
+            worldState = 1;
             return;
         }
         if (fsm.CurrentStateType == PlayerStateType.Camera)
         {
             cameraOff.start();
             GotoFirstPerson();
+            worldState = 0;
             return;
         }
     }
