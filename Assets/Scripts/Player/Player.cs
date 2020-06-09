@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    [HideInInspector] public int worldState { get; private set; } // 0 for normal world, 1 for camera world
+
     private PlayerFSM fsm;
 
     [SerializeField] private GameObject mainWorld;
@@ -60,6 +62,21 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        float forwardInput = Input.GetAxisRaw("Vertical");
+        float horizInput = Input.GetAxisRaw("Horizontal");
+
+        walkVector = new Vector2(horizInput, forwardInput);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Switch();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Interact();
+        }
+
         fsm.UpdateState();
     }
 
@@ -121,12 +138,14 @@ public class Player : MonoBehaviour
         {
             cameraOn.start();
             GotoCamera();
+            worldState = 1;
             return;
         }
         if (fsm.CurrentStateType == PlayerStateType.Camera)
         {
             cameraOff.start();
             GotoFirstPerson();
+            worldState = 0;
             return;
         }
     }

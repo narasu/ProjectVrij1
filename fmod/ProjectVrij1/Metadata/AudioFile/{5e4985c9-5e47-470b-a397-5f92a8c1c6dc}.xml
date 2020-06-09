@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{5e4985c9-5e47-470b-a397-5f92a8c1c6dc}">
+		<property name="assetPath">
+			<value>384863__ali-6868__left-grass-grassy-footstep-4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f510fb22-a3ad-49fc-adda-a2fcf81ffd29}</destination>
+		</relationship>
+	</object>
+</objects>

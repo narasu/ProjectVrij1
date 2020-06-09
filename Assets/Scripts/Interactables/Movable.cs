@@ -10,6 +10,7 @@ public class Movable : Interactable
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform playerHand;
+    [SerializeField] private Transform worldType;
 
     protected override void Awake()
     {
@@ -47,10 +48,20 @@ public class Movable : Interactable
 
     public void Drop()
     {
-        transform.parent = null;
+        transform.parent = worldType;
         rb.useGravity = true;
         
         gameObject.layer = 10;
         
     }
+    /*
+    private void OnEnable()
+    {
+        rb.useGravity = true;
+    }
+
+    private void OnDisable()
+    {
+        rb.useGravity = false;
+    }*/
 }
