@@ -20,7 +20,7 @@ public class PlayerLook : MonoBehaviour
 
     [SerializeField] [Range(0, 5)] private float raycastDistance = 10f;
 
-    [SerializeField] [Range(5, 20)] private float mouseSensitivity = 150f;
+    [SerializeField] [Range(0, 150)] private float mouseSensitivity = 100f;
 #pragma warning restore 0649
 
     private float xAxisClamp;
@@ -58,8 +58,8 @@ public class PlayerLook : MonoBehaviour
     private void CameraRotation()
     {
         //set mouse movement values
-        float mouseX = lookVector.x * mouseSensitivity * Time.deltaTime;
-        float mouseY = lookVector.y * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         xAxisClamp += mouseY;
 

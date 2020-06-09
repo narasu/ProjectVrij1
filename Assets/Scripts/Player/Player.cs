@@ -62,9 +62,22 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        fsm.UpdateState();
+        float forwardInput = Input.GetAxisRaw("Vertical");
+        float horizInput = Input.GetAxisRaw("Horizontal");
 
-        
+        walkVector = new Vector2(horizInput, forwardInput);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Switch();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Interact();
+        }
+
+        fsm.UpdateState();
     }
 
     public void Jump()

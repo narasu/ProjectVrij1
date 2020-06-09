@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.PlayerLoop;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,14 +36,14 @@ public class GameManager : MonoBehaviour
 
     public void HandlePause()
     {
-        if (fsm.CurrentStateType != GameStateType.Pause)
+        if (fsm.CurrentStateType == GameStateType.Play)
         {
-            Debug.Log("Pausing");
             GotoPause();
+            return;
         }
-        else
+        if (fsm.CurrentStateType == GameStateType.Pause)
         {
-            GotoPrevious();
+            GotoPlay();
         }
     }
 
@@ -54,6 +55,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         fsm.UpdateState();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            HandlePause();
+        }
     }
 
     //Start the scene (this method is called from UI onclick)
