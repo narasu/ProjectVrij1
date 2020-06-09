@@ -4,25 +4,14 @@ using UnityEngine;
 
 public class KeyItem : MonoBehaviour
 {
-    [SerializeField] private Transform lockItem;
-    [SerializeField] private Collider lockTrigger;
+    [SerializeField] protected Transform lockItem;
+    [SerializeField] protected Collider lockTrigger;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other == lockTrigger)
         {
+            GetComponent<Movable>()?.Drop();
             lockItem.GetComponent<LockItem>()?.Unlock();
         }
     }
