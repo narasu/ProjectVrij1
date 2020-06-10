@@ -61,7 +61,7 @@ public class PlayerLook : MonoBehaviour
 
         xAxisClamp += mouseY;
 
-        //looking up
+        //clamp rotation when looking up
         if (xAxisClamp > 90.0f)
         {
             xAxisClamp = 90.0f;
@@ -69,7 +69,7 @@ public class PlayerLook : MonoBehaviour
             ClampXAxisRotationToValue(270.0f);
         }
 
-        //looking down
+        //clamp rotation when looking down
         if (xAxisClamp < -60.0f)
         {
             xAxisClamp = -60.0f;
@@ -88,6 +88,7 @@ public class PlayerLook : MonoBehaviour
         transform.eulerAngles = eulerRotation;
     }
 
+    //set target for the player to interact with
     private void SetTarget(Interactable i)
     {
         target = i;

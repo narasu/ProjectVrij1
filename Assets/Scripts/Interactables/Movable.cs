@@ -24,6 +24,7 @@ public class Movable : Interactable
 
     }
 
+    // Set position to player's hand, and set all velocities to zero.
     // layer 9 = in hand. layer 10 = interactable.
     public void Grab()
     {
@@ -37,6 +38,7 @@ public class Movable : Interactable
         rb.useGravity = false;
     }
 
+    // Return it to the world layer and turn the gravity back on
     public void Drop()
     {
         transform.parent = worldType;
@@ -45,14 +47,4 @@ public class Movable : Interactable
         gameObject.layer = 10;
         
     }
-    /*
-    private void OnEnable()
-    {
-        rb.useGravity = true;
-    }
-
-    private void OnDisable()
-    {
-        rb.useGravity = false;
-    }*/
 }

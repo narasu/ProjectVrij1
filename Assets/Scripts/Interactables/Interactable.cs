@@ -4,36 +4,24 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour, IClickable
 {
-    /*[Header("Sprites")]
-    public Sprite buttonPressSprite;
-    public Sprite normalSprite;
-    public Sprite highlightedSprite;
-
-    [HideInInspector] public SpriteRenderer spriteRenderer;*/
     protected InteractableFSM fsm;
 
-    //public Transform player;
-
-    //[FMODUnity.EventRef]
-    //public string NoiseEvent = "";
-    //FMOD.Studio.EventInstance noise;
-
+    //Create FSM
     protected virtual void Awake()
     {
-        //spriteRenderer = GetComponent<SpriteRenderer>();
-
         fsm = new InteractableFSM();
-        //noise = FMODUnity.RuntimeManager.CreateInstance(NoiseEvent);
     }
 
     void Start()
     {
+        //Initialize FSM and add states
         fsm.Initialize(this);
 
         fsm.AddState(InteractableStateType.Normal, new NormalState());
         fsm.AddState(InteractableStateType.Highlighted, new HighlightedState());
         fsm.AddState(InteractableStateType.Interacting, new InteractingState());
 
+        //start in normal state
         GotoNormal();
     }
 
@@ -42,22 +30,17 @@ public class Interactable : MonoBehaviour, IClickable
         fsm.UpdateState();
     }
 
+    //Go to highlighted state, called when player is looking at an interactable object
     public void Highlight()
     {
         if (fsm.CurrentStateType==InteractableStateType.Normal)
         {
-            Debug.Log("hoi");
-            //FMODUnity.RuntimeManager.PlayOneShot(NoiseEvent, transform.position);
-            //noise.start();
             GotoHighlighted();
         }
         
     }
 
-    public virtual void HandleInteraction()
-    {
-        //Debug.Log("interacting");
-    }
+    public virtual void HandleInteraction() {}
 
     public virtual void GotoNormal()
     {
