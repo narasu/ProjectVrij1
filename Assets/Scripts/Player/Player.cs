@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -28,9 +29,10 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 walkVector;
     private Vector3 forwardMovement, rightMovement, movement;
 
-    [Header("World object groups")]
+    [Header("Worldswitching")]
     [SerializeField] private GameObject mainWorld;
     [SerializeField] private GameObject altWorld;
+    [SerializeField] private Image cameraFlash;
 
     [Header("Audio")]
     [FMODUnity.EventRef] public string CameraOnEvent = "";
@@ -41,16 +43,16 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        //instance = FindObjectOfType<Player>();
         instance = this;
         charController = GetComponent<CharacterController>();
 
+        //setup FSM
         fsm = new PlayerFSM();
         fsm.Initialize(this);
-
         fsm.AddState(PlayerStateType.FirstPerson, new FirstPersonState());
         fsm.AddState(PlayerStateType.Camera, new CameraState());
 
+        //instantiate sound events for world switching
         cameraOn = FMODUnity.RuntimeManager.CreateInstance(CameraOnEvent);
         cameraOff = FMODUnity.RuntimeManager.CreateInstance(CameraOffEvent);
     }
@@ -62,21 +64,25 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        //update movement vectors based on player input
         float forwardInput = Input.GetAxisRaw("Vertical");
         float horizInput = Input.GetAxisRaw("Horizontal");
 
         walkVector = new Vector2(horizInput, forwardInput);
 
+        //Input event for switching between worlds
         if (Input.GetKeyDown(KeyCode.E))
         {
             Switch();
         }
 
+        //Input event for interacting with objects
         if (Input.GetMouseButtonDown(0))
         {
             Interact();
         }
 
+        //run update on current state
         fsm.UpdateState();
     }
 
@@ -88,8 +94,6 @@ public class Player : MonoBehaviour
     //player movement
     public void Walk()
     {
-        //transform.Translate(movement);
-
         forwardMovement = transform.forward * walkVector.y;
         rightMovement = transform.right * walkVector.x;
 
@@ -111,11 +115,11 @@ public class Player : MonoBehaviour
         {
             if (inHand.GetComponent<Rigidbody>()==null)
             {
-                inHand = null;
+                ClearHand();
                 return;
             }
             inHand.Drop();
-            inHand = null;
+            ClearHand();
             return;
         }
 
@@ -140,7 +144,7 @@ public class Player : MonoBehaviour
         inHand = null;
     }
 
-    //gets called on Switch input event. Switch between normal and camera state
+    //Switch between normal and camera state
     public void Switch()
     {
         if (fsm.CurrentStateType == PlayerStateType.FirstPerson)

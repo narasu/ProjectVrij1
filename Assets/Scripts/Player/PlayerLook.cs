@@ -36,17 +36,15 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         CameraRotation();
+
         SetTarget(null);
         RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
+        //Cast a ray and scan for an Interactable target
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastDistance)) 
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            //Debug.Log("Did Hit");
             SetTarget(hit.transform.GetComponent<Interactable>());
-            //Debug.Log(target);
             hit.transform.gameObject.GetComponent<Interactable>()?.Highlight();
-
         }
         else
         {

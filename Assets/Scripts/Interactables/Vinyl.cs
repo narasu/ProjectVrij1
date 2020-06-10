@@ -22,6 +22,7 @@ public class Vinyl : KeyItem
         if (other == lockTrigger && !unlocked)
         {
             Destroy(GetComponent<Rigidbody>());
+            Destroy(GetComponent<Movable>()); //in other use cases it might be better to use enabled = false
             transform.position = recordPlayerPin.position;
             transform.rotation = recordPlayerPin.rotation;
             unlocked = true;
