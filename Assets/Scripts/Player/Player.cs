@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +14,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    [HideInInspector] public int worldState { get; private set; } // 0 for normal world, 1 for camera world
+
     private PlayerFSM fsm;
 
     [SerializeField] private GameObject mainWorld;
@@ -27,8 +27,16 @@ public class Player : MonoBehaviour
 
     private CharacterController charController;
     [SerializeField] private float movementSpeed = 8.0f;
+    [HideInInspector] public Vector2 walkVector;
+    private Vector3 forwardMovement, rightMovement, movement;
 
-    public Vector2 walkVector;
+    //Audio
+
+    [FMODUnity.EventRef] public string CameraOnEvent = "";
+    [FMODUnity.EventRef] public string CameraOffEvent = "";
+
+    FMOD.Studio.EventInstance cameraOn;
+    FMOD.Studio.EventInstance cameraOff;
 
     private void Awake()
     {
@@ -42,7 +50,8 @@ public class Player : MonoBehaviour
         fsm.AddState(PlayerStateType.FirstPerson, new FirstPersonState());
         fsm.AddState(PlayerStateType.Camera, new CameraState());
 
-        //InputManager.Instance.controls.FirstPerson.Enable();
+        cameraOn = FMODUnity.RuntimeManager.CreateInstance(CameraOnEvent);
+        cameraOff = FMODUnity.RuntimeManager.CreateInstance(CameraOffEvent);
     }
 
     private void Start()
@@ -52,6 +61,21 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        float forwardInput = Input.GetAxisRaw("Vertical");
+        float horizInput = Input.GetAxisRaw("Horizontal");
+
+        walkVector = new Vector2(horizInput, forwardInput);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Switch();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Interact();
+        }
+
         fsm.UpdateState();
     }
 
@@ -65,10 +89,10 @@ public class Player : MonoBehaviour
     {
         //transform.Translate(movement);
 
-        Vector3 forwardMovement = transform.forward * walkVector.y;
-        Vector3 rightMovement = transform.right * walkVector.x;
+        forwardMovement = transform.forward * walkVector.y;
+        rightMovement = transform.right * walkVector.x;
 
-        Vector3 movement = Vector3.Normalize(forwardMovement + rightMovement) * movementSpeed;
+        movement = Vector3.Normalize(forwardMovement + rightMovement) * movementSpeed;
         charController.SimpleMove(movement);
     }
 
@@ -111,12 +135,16 @@ public class Player : MonoBehaviour
     {
         if (fsm.CurrentStateType == PlayerStateType.FirstPerson)
         {
+            cameraOn.start();
             GotoCamera();
+            worldState = 1;
             return;
         }
         if (fsm.CurrentStateType == PlayerStateType.Camera)
         {
+            cameraOff.start();
             GotoFirstPerson();
+            worldState = 0;
             return;
         }
     }
