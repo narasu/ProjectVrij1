@@ -17,11 +17,9 @@ public class GameFSM
     {
         states = new Dictionary<GameStateType, GameState>();
 
-        states.Add(GameStateType.MainMenu, new MainMenuState());
         states.Add(GameStateType.Play, new PlayState());
         states.Add(GameStateType.Pause, new PauseState());
         states.Add(GameStateType.Win, new WinState());
-        states.Add(GameStateType.Dead, new DeadState());
     }
 
     public void UpdateState()
