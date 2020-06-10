@@ -18,7 +18,7 @@ public class PlayerLook : MonoBehaviour
 
     public Vector2 lookVector;
 
-    [SerializeField] [Range(0, 5)] private float raycastDistance = 10f;
+    [SerializeField] [Range(0, 20)] private float raycastDistance = 10f;
 
     [SerializeField] [Range(0, 150)] private float mouseSensitivity = 100f;
 #pragma warning restore 0649
