@@ -26,12 +26,12 @@ public class FirstPersonState : PlayerState
     {
         //InputManager.Instance.controls.FirstPerson.Enable();
         player.EnableMainWorld();
+        
+
     }
 
     public override void Update()
     {
-        
-
         player.Walk();
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.PlayerLoop;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,25 +36,30 @@ public class GameManager : MonoBehaviour
 
     public void HandlePause()
     {
-        if (fsm.CurrentStateType != GameStateType.Pause)
+        if (fsm.CurrentStateType == GameStateType.Play)
         {
-            Debug.Log("Pausing");
             GotoPause();
+            return;
         }
-        else
+        if (fsm.CurrentStateType == GameStateType.Pause)
         {
-            GotoPrevious();
+            GotoPlay();
         }
     }
 
     private void Start()
     {
-        GotoMainMenu();
+        GotoPlay();
     }
 
     private void Update()
     {
         fsm.UpdateState();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            HandlePause();
+        }
     }
 
     //Start the scene (this method is called from UI onclick)
@@ -68,11 +74,6 @@ public class GameManager : MonoBehaviour
         //reset positions, deactivate/destroy objects, return to initial state, etc etc etc
     }
 
-    //Methods for switching to each state
-    public void GotoMainMenu()
-    {
-        fsm.GotoState(GameStateType.MainMenu);
-    }
     public void GotoPlay()
     {
         fsm.GotoState(GameStateType.Play);
@@ -85,10 +86,7 @@ public class GameManager : MonoBehaviour
     {
         fsm.GotoState(GameStateType.Win);
     }
-    public void GotoDead()
-    {
-        fsm.GotoState(GameStateType.Dead);
-    }
+
     //switch to whatever state the game was previously in
     public void GotoPrevious()
     {
