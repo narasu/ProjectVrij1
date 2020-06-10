@@ -1,18 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Lock for use in lock-and-key mechanic
 public class LockItem : MonoBehaviour
 {
-    [FMODUnity.EventRef] public string UnlockSoundEvent = "";
-    FMOD.Studio.EventInstance unlockSound;
+    [FMODUnity.EventRef][Tooltip("Sound to play when this object is unlocked")] public string UnlockSoundEvent = "";
+    protected FMOD.Studio.EventInstance unlockSound;
 
     private bool unlocked = false;
-    private void Awake()
-    {
-        
-    }
 
+    //Unlock this item and play its unlock sound
     public void Unlock()
     {
         if (unlocked)
@@ -25,6 +22,8 @@ public class LockItem : MonoBehaviour
         unlocked = true;
     }
 
+    //might have to move this bit to a Record player sub-class
+    //as it is very specific behavior that could break sub-classes 
     private void OnDisable()
     {
         if (unlockSound.isValid())

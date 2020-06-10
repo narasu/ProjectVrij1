@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -17,21 +18,35 @@ public class Player : MonoBehaviour
     [HideInInspector] public int worldState { get; private set; } // 0 for normal world, 1 for camera world
 
     private PlayerFSM fsm;
-
-    [SerializeField] private GameObject mainWorld;
-    [SerializeField] private GameObject altWorld;
-
+    
+    //Object the player is looking at
     private Interactable lookingAt;
+
+    //Object of type movable that the player is holding
     private Movable inHand;
 
-
+    //Character controller, movement
     private CharacterController charController;
     [SerializeField] private float movementSpeed = 8.0f;
     [HideInInspector] public Vector2 walkVector;
     private Vector3 forwardMovement, rightMovement, movement;
 
-    //Audio
+    //Worldswitching
+    [Header("Worldswitching")]
+    [SerializeField] private GameObject mainWorld;
+    [SerializeField] private GameObject altWorld;
+    [SerializeField] private Image cameraFlash;
+    //Fade times for world transition
+    [SerializeField] 
+    [Range(0f, 2.0f)] 
+    [Tooltip("Fade time in seconds")] 
+    private float toAltFadeIn, toAltFadeOut, toMainFadeIn, toMainFadeOut;
+    private float fadeInTime, fadeOutTime;
 
+    
+    private IEnumerator switchCoroutine;
+
+    [Header("Audio")]
     [FMODUnity.EventRef] public string CameraOnEvent = "";
     [FMODUnity.EventRef] public string CameraOffEvent = "";
 
@@ -40,16 +55,19 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        //instance = FindObjectOfType<Player>();
+        //Initialize variables;
         instance = this;
         charController = GetComponent<CharacterController>();
+        worldState = 0;
+        SetFadeTime();
 
+        //setup FSM
         fsm = new PlayerFSM();
         fsm.Initialize(this);
-
         fsm.AddState(PlayerStateType.FirstPerson, new FirstPersonState());
         fsm.AddState(PlayerStateType.Camera, new CameraState());
 
+        //instantiate sound events for world switching
         cameraOn = FMODUnity.RuntimeManager.CreateInstance(CameraOnEvent);
         cameraOff = FMODUnity.RuntimeManager.CreateInstance(CameraOffEvent);
     }
@@ -61,21 +79,31 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        //update movement vectors based on player input
         float forwardInput = Input.GetAxisRaw("Vertical");
         float horizInput = Input.GetAxisRaw("Horizontal");
 
         walkVector = new Vector2(horizInput, forwardInput);
 
+        //Input event for switching between worlds
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Switch();
+            if (inHand!=null)
+            {
+                inHand.Drop();
+            }
+            
+            switchCoroutine = StartWorldSwitch(fadeInTime, fadeOutTime);
+            StartCoroutine(switchCoroutine);
         }
 
+        //Input event for interacting with objects
         if (Input.GetMouseButtonDown(0))
         {
             Interact();
         }
 
+        //run update on current state
         fsm.UpdateState();
     }
 
@@ -87,8 +115,6 @@ public class Player : MonoBehaviour
     //player movement
     public void Walk()
     {
-        //transform.Translate(movement);
-
         forwardMovement = transform.forward * walkVector.y;
         rightMovement = transform.right * walkVector.x;
 
@@ -96,20 +122,19 @@ public class Player : MonoBehaviour
         charController.SimpleMove(movement);
     }
 
-    //mouseDelta is set by Look input event
-    public void Look(Vector2 mouseDelta)
-    {
-        Debug.Log(mouseDelta);
-    }
-
-    //gets called on Interact input event. Interact with objects
+    //Interact with objects
     public void Interact()
     {
-        //does the player have something in hand? if so, drop
+        //does the player have something in hand? if so, drop. 
         if (inHand != null)
         {
+            if (inHand.GetComponent<Rigidbody>()==null) //check if an object got removed but failed to clear
+            {
+                ClearHand();
+                return;
+            }
             inHand.Drop();
-            inHand = null;
+            ClearHand();
             return;
         }
 
@@ -129,22 +154,90 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ClearHand()
+    {
+        inHand = null;
+    }
 
-    //gets called on Switch input event. Switch between normal and camera state
+    //Switch between normal and camera state
     public void Switch()
     {
-        if (fsm.CurrentStateType == PlayerStateType.FirstPerson)
+        if (worldState==0)
         {
-            cameraOn.start();
             GotoCamera();
             worldState = 1;
             return;
         }
-        if (fsm.CurrentStateType == PlayerStateType.Camera)
+        if (worldState==1)
         {
-            cameraOff.start();
             GotoFirstPerson();
             worldState = 0;
+            return;
+        }
+    }
+
+    //Play the correct audio sample on world switch
+    public void SwitchAudio()
+    {
+        if (worldState == 0)
+        {
+            cameraOn.start();
+            return;
+        }
+        if (worldState == 1)
+        {
+            cameraOff.start();
+            return;
+        }
+    }
+
+    //Start world transition fade in
+    public IEnumerator StartWorldSwitch(float timeIn, float timeOut)
+    {
+        //start transition audio
+        SwitchAudio();
+        
+        while (cameraFlash.color.a < 1)
+        {
+            Color temp = cameraFlash.color;
+            temp.a += 0.01f / timeIn;
+            cameraFlash.color = temp;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        Switch();
+
+        switchCoroutine = EndWorldSwitch(timeOut);
+        StartCoroutine(switchCoroutine);
+    }
+
+    //World transition fade out
+    public IEnumerator EndWorldSwitch(float t)
+    {
+        while (cameraFlash.color.a > 0)
+        {
+            Color temp = cameraFlash.color;
+            temp.a -= 0.01f / t;
+            cameraFlash.color = temp;
+            yield return new WaitForSeconds(0.01f);
+        }
+        SetFadeTime();
+    }
+
+    //Update fade times for the world transition based on current world state
+    public void SetFadeTime()
+    {
+        if (worldState == 0)
+        {
+            fadeInTime = toAltFadeIn;
+            fadeOutTime = toAltFadeOut;
+            return;
+        }
+
+        if (worldState == 1)
+        {
+            fadeInTime = toMainFadeIn;
+            fadeOutTime = toMainFadeOut;
             return;
         }
     }

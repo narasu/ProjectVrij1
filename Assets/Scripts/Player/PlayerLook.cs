@@ -18,7 +18,7 @@ public class PlayerLook : MonoBehaviour
 
     public Vector2 lookVector;
 
-    [SerializeField] [Range(0, 5)] private float raycastDistance = 10f;
+    [SerializeField] [Range(0, 20)] private float raycastDistance = 10f;
 
     [SerializeField] [Range(0, 150)] private float mouseSensitivity = 100f;
 #pragma warning restore 0649
@@ -36,17 +36,15 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         CameraRotation();
+
         SetTarget(null);
         RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
+        //Cast a ray and scan for an Interactable target
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastDistance)) 
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            //Debug.Log("Did Hit");
             SetTarget(hit.transform.GetComponent<Interactable>());
-            //Debug.Log(target);
             hit.transform.gameObject.GetComponent<Interactable>()?.Highlight();
-
         }
         else
         {
@@ -63,7 +61,7 @@ public class PlayerLook : MonoBehaviour
 
         xAxisClamp += mouseY;
 
-        //looking up
+        //clamp rotation when looking up
         if (xAxisClamp > 90.0f)
         {
             xAxisClamp = 90.0f;
@@ -71,7 +69,7 @@ public class PlayerLook : MonoBehaviour
             ClampXAxisRotationToValue(270.0f);
         }
 
-        //looking down
+        //clamp rotation when looking down
         if (xAxisClamp < -60.0f)
         {
             xAxisClamp = -60.0f;
@@ -90,6 +88,7 @@ public class PlayerLook : MonoBehaviour
         transform.eulerAngles = eulerRotation;
     }
 
+    //set target for the player to interact with
     private void SetTarget(Interactable i)
     {
         target = i;
