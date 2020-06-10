@@ -12,6 +12,7 @@ public class KeyItem : MonoBehaviour
         if (other == lockTrigger)
         {
             GetComponent<Movable>()?.Drop();
+            Player.Instance.ClearHand();
             lockItem.GetComponent<LockItem>()?.Unlock();
         }
     }

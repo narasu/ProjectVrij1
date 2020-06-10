@@ -17,9 +17,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public int worldState { get; private set; } // 0 for normal world, 1 for camera world
 
     private PlayerFSM fsm;
-
-    [SerializeField] private GameObject mainWorld;
-    [SerializeField] private GameObject altWorld;
+    
 
     private Interactable lookingAt;
     private Movable inHand;
@@ -30,8 +28,11 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 walkVector;
     private Vector3 forwardMovement, rightMovement, movement;
 
-    //Audio
+    [Header("World object groups")]
+    [SerializeField] private GameObject mainWorld;
+    [SerializeField] private GameObject altWorld;
 
+    [Header("Audio")]
     [FMODUnity.EventRef] public string CameraOnEvent = "";
     [FMODUnity.EventRef] public string CameraOffEvent = "";
 
@@ -108,6 +109,11 @@ public class Player : MonoBehaviour
         //does the player have something in hand? if so, drop
         if (inHand != null)
         {
+            if (inHand.GetComponent<Rigidbody>()==null)
+            {
+                inHand = null;
+                return;
+            }
             inHand.Drop();
             inHand = null;
             return;
@@ -129,6 +135,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ClearHand()
+    {
+        inHand = null;
+    }
 
     //gets called on Switch input event. Switch between normal and camera state
     public void Switch()

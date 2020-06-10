@@ -17,16 +17,6 @@ public class Movable : Interactable
         base.Awake();
     }
 
-    private void FixedUpdate()
-    {
-        if (gameObject.layer==9)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            
-        }
-    }
-
     //called from InteractingState.Update()
     public override void HandleInteraction()
     {
@@ -43,6 +33,7 @@ public class Movable : Interactable
         rb.angularVelocity = Vector3.zero;
         transform.parent = playerHand;
         transform.localPosition = Vector3.zero;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
         rb.useGravity = false;
     }
 
@@ -50,7 +41,7 @@ public class Movable : Interactable
     {
         transform.parent = worldType;
         rb.useGravity = true;
-        
+        rb.constraints = RigidbodyConstraints.None;
         gameObject.layer = 10;
         
     }
