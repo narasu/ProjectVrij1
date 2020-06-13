@@ -70,7 +70,11 @@
 			<destination>{3bafb587-4ca1-4477-8d74-01ee5d48d5a2}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{84e29674-6258-48bf-94c3-7108b83efbb3}" />
+	<object class="Timeline" id="{84e29674-6258-48bf-94c3-7108b83efbb3}">
+		<property name="isProxyEnabled">
+			<value>false</value>
+		</property>
+	</object>
 	<object class="ParameterProxy" id="{8e40f4b7-49b9-41bb-a1cd-0410019db653}">
 		<relationship name="modules">
 			<destination>{bf3f2f9c-a58a-4937-bbc0-824909c86e07}</destination>
@@ -115,7 +119,6 @@
 		<property name="start">
 			<value>1</value>
 		</property>
-		<property name="name" />
 		<property name="volume">
 			<value>-17</value>
 		</property>

@@ -44,7 +44,7 @@ public class PlayerLook : MonoBehaviour
         //Cast a ray and scan for an Interactable target
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastDistance)) 
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             SetTarget(hit.transform.GetComponent<Interactable>());
             if(lastTarget != GetTarget())
             {
@@ -53,7 +53,7 @@ public class PlayerLook : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastDistance, Color.white);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastDistance, Color.white);
         }
     }
 
