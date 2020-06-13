@@ -26,6 +26,7 @@ public class PlayerLook : MonoBehaviour
     private float xAxisClamp;
 
     private Interactable target;
+    private Interactable lastTarget;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class PlayerLook : MonoBehaviour
     {
         CameraRotation();
 
+        lastTarget = GetTarget();
         SetTarget(null);
         RaycastHit hit;
         //Cast a ray and scan for an Interactable target
@@ -44,12 +46,14 @@ public class PlayerLook : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             SetTarget(hit.transform.GetComponent<Interactable>());
-            hit.transform.gameObject.GetComponent<Interactable>()?.Highlight();
+            if(lastTarget != GetTarget())
+            {
+                hit.transform.gameObject.GetComponent<Interactable>()?.Highlight();
+            }
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastDistance, Color.white);
-            //Debug.Log("Did not Hit");
         }
     }
 
