@@ -16,22 +16,23 @@ public class Player : MonoBehaviour
     }
 
     [HideInInspector] public int worldState { get; private set; } // 0 for normal world, 1 for camera world
+    
 
     private PlayerFSM fsm;
     
+    /*    Interactions    */
     //Object the player is looking at
     private Interactable lookingAt;
-
     //Object of type movable that the player is holding
     private Movable inHand;
 
-    //Character controller, movement
+    /*    Character Movement    */
     private CharacterController charController;
     [SerializeField] private float movementSpeed = 8.0f;
     [HideInInspector] public Vector2 walkVector;
     private Vector3 forwardMovement, rightMovement, movement;
 
-    //Worldswitching
+    /*    Worldswitching    */
     [Header("Worldswitching")]
     [SerializeField] private GameObject mainWorld;
     [SerializeField] private GameObject altWorld;
@@ -42,16 +43,20 @@ public class Player : MonoBehaviour
     [Tooltip("Fade time in seconds")] 
     private float toAltFadeIn, toAltFadeOut, toMainFadeIn, toMainFadeOut;
     private float fadeInTime, fadeOutTime;
-
-    
+    //a variable to store the coroutines that handle worldswitching
     private IEnumerator switchCoroutine;
+    [HideInInspector] public bool HasCamera { get => hasCamera; set => hasCamera = value; }
+    private bool hasCamera = false;
 
+    /*    Audio    */
     [Header("Audio")]
     [FMODUnity.EventRef] public string CameraOnEvent = "";
     [FMODUnity.EventRef] public string CameraOffEvent = "";
-
     FMOD.Studio.EventInstance cameraOn;
     FMOD.Studio.EventInstance cameraOff;
+
+    //PRess E Tutorial Text (will move to different class later)
+    [SerializeField] private GameObject tutorialText;
 
     private void Awake()
     {
@@ -107,9 +112,23 @@ public class Player : MonoBehaviour
         fsm.UpdateState();
     }
 
-    public void Jump()
+    public void GetCamera()
     {
-        Debug.Log("Jump");
+        hasCamera = true;
+        tutorialText.SetActive(true);
+        StartCoroutine("TextTimer");
+    }
+
+    private IEnumerator TextTimer()
+    {
+        int i = 0;
+        while (i==0)
+        {
+            i++;
+            yield return new WaitForSeconds(1.0f);
+            tutorialText.SetActive(false);
+        }
+        
     }
 
     //player movement

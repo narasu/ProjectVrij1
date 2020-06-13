@@ -1,10 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using System;
-using UnityEngine.PlayerLoop;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,18 +15,20 @@ public class GameManager : MonoBehaviour
     }
 
     [Header("UI objects")]
-    public GameObject mainMenuObject;
     public GameObject pauseObject;
-    public GameObject deadMenuObject;
     public GameObject winMenuObject;
 
+    //[SerializeField] private GameObject[] tutorialText = new GameObject[3];
+
     private GameFSM fsm;
+
 
 
     private void Awake()
     {
         fsm = new GameFSM();
         fsm.Initialize();
+
 
         instance = FindObjectOfType<GameManager>();
     }
@@ -49,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GotoMainMenu();
+        GotoPlay();
     }
 
     private void Update()
@@ -73,12 +72,12 @@ public class GameManager : MonoBehaviour
     {
         //reset positions, deactivate/destroy objects, return to initial state, etc etc etc
     }
-
-    //Methods for switching to each state
-    public void GotoMainMenu()
+    /*
+    public void EnableText(TutorialText t)
     {
-        fsm.GotoState(GameStateType.MainMenu);
+
     }
+    */
     public void GotoPlay()
     {
         fsm.GotoState(GameStateType.Play);
@@ -91,10 +90,7 @@ public class GameManager : MonoBehaviour
     {
         fsm.GotoState(GameStateType.Win);
     }
-    public void GotoDead()
-    {
-        fsm.GotoState(GameStateType.Dead);
-    }
+
     //switch to whatever state the game was previously in
     public void GotoPrevious()
     {
