@@ -8,6 +8,7 @@ public class SwitchableAudio : MonoBehaviour
 {
     [FMODUnity.EventRef] public string SoundEvent = "";
 
+    [SerializeField] private bool playOnAwake = true;
     [SerializeField] private bool repeat = true;
     [SerializeField] [Tooltip("How long until this audio repeats? (in seconds)")] private float repeatInterval = 0.5f;
     [SerializeField] [Tooltip("Should this audio be allowed to fade out when stopped?")] private bool allowFadeOut = false;
@@ -25,14 +26,11 @@ public class SwitchableAudio : MonoBehaviour
         sound = FMODUnity.RuntimeManager.CreateInstance(SoundEvent);
 
         //depending on settings, play audio once or repeat
-        if (!repeat)
+        if (playOnAwake)
         {
-            sound.start();
+            PlaySound(repeat);
         }
-        else 
-        {
-            StartCoroutine("PlaySoundRepeat");
-        }
+        
 
         //create handle for the event's WorldType parameter
 
@@ -59,6 +57,18 @@ public class SwitchableAudio : MonoBehaviour
 
         //update the WorldType parameter
         sound.setParameterByID(soundParameterId, Player.Instance.worldState);
+    }
+
+    public void PlaySound(bool r = false)
+    {
+        if (!r)
+        {
+            sound.start();
+        }
+        else
+        {
+            StartCoroutine("PlaySoundRepeat");
+        }
     }
 
     //set the 3D attributes of the audio event, checking for a rigidbody in the process
