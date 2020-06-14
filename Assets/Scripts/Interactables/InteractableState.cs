@@ -40,14 +40,18 @@ public class HighlightedState : InteractableState
     public override void Enter()
     {
         //interactable.spriteRenderer.sprite = interactable.highlightedSprite;
+        interactable.GetComponent<CameraProp>()?.EnableText();
     }
     public override void Update()
     {
-        
+        if (PlayerLook.Instance.GetTarget()!=interactable)
+        {
+            interactable.GotoNormal();
+        }
     }
     public override void Exit()
     {
-
+        interactable.GetComponent<CameraProp>()?.DisableText();
     }
 }
 public class InteractingState : InteractableState
