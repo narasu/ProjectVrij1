@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="ParameterPreset" id="{1e417513-f78f-4e05-962d-47ebf162a592}">
 		<property name="name">
-			<value>Surface_sounds</value>
+			<value>Walking Alt World</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b2463dc7-cdcc-4a24-8999-58e2126fdd33}</destination>
@@ -19,7 +19,7 @@
 			<value>2</value>
 		</property>
 		<property name="enumerationLabels">
-			<value>Room</value>
+			<value>Walking Main World</value>
 			<value>Grass</value>
 		</property>
 		<property name="isGlobal">
