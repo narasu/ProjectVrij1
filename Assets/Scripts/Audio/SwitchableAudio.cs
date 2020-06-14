@@ -17,30 +17,26 @@ public class SwitchableAudio : MonoBehaviour
 
     private Rigidbody rigidBody;
 
-    private void Awake()
+    private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-    }
-    void Start()
-    {
+
         sound = FMODUnity.RuntimeManager.CreateInstance(SoundEvent);
+
+        //create handle for the event's WorldType parameter
+        FMOD.Studio.EventDescription soundEventDescription;
+        sound.getDescription(out soundEventDescription);
+        FMOD.Studio.PARAMETER_DESCRIPTION soundParameterDescription;
+        soundEventDescription.getParameterDescriptionByName("WorldType", out soundParameterDescription);
+        soundParameterId = soundParameterDescription.id;
 
         //depending on settings, play audio once or repeat
         if (playOnAwake)
         {
             PlaySound(repeat);
         }
-        
-
-        //create handle for the event's WorldType parameter
-
-        FMOD.Studio.EventDescription soundEventDescription;
-        sound.getDescription(out soundEventDescription);
-        FMOD.Studio.PARAMETER_DESCRIPTION soundParameterDescription;
-        soundEventDescription.getParameterDescriptionByName("WorldType", out soundParameterDescription);
-        soundParameterId = soundParameterDescription.id;
     }
-    
+
     //play sound every repeatInterval
     private IEnumerator PlaySoundRepeat()
     {
@@ -59,9 +55,10 @@ public class SwitchableAudio : MonoBehaviour
         sound.setParameterByID(soundParameterId, Player.Instance.worldState);
     }
 
-    public void PlaySound(bool r = false)
+    //by default repeat = false, but if playOnAwake == true it will always use the value set in the inspector
+    public void PlaySound(bool repeat = false)
     {
-        if (!r)
+        if (!repeat)
         {
             sound.start();
         }

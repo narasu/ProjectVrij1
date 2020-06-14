@@ -12,6 +12,10 @@ public class LockItem : MonoBehaviour
     private void Awake()
     {
         unlockSound = FMODUnity.RuntimeManager.CreateInstance(UnlockSoundEvent);
+    }
+
+    private void Update()
+    {
         unlockSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
     }
 
@@ -25,8 +29,8 @@ public class LockItem : MonoBehaviour
         unlocked = true;
     }
 
-    //might have to move this bit to its own class
-    //as it is very specific behavior that could break sub-classes 
+    //considering moving this bit to its own class
+    //as it is behavior specific to the record player that could break sub-classes
     private void OnDisable()
     {
         if (unlockSound.isValid())
