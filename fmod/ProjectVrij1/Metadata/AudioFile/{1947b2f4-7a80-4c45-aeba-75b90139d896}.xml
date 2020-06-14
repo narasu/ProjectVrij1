@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{1947b2f4-7a80-4c45-aeba-75b90139d896}">
+		<property name="assetPath">
+			<value>Grass1 4-Audio.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.75</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f510fb22-a3ad-49fc-adda-a2fcf81ffd29}</destination>
+		</relationship>
+	</object>
+</objects>
