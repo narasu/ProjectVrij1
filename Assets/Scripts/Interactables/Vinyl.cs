@@ -30,8 +30,6 @@ public class Vinyl : KeyItem
             transform.position = recordPlayerPin.position;
             transform.rotation = recordPlayerPin.rotation;
             unlocked = true;
-
-            phone.Activate();
         }
     }
 }

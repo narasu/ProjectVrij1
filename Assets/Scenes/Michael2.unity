@@ -1079,7 +1079,7 @@ MonoBehaviour:
   SoundEvent: event:/Telephone
   playOnAwake: 1
   repeat: 1
-  repeatInterval: 1
+  repeatInterval: 1.8
   allowFadeOut: 0
 --- !u!4 &952222591
 Transform:
@@ -1937,6 +1937,7 @@ MonoBehaviour:
   lockItem: {fileID: 7383080431999217376}
   lockTrigger: {fileID: 5607301340519370396}
   phoneAudio: {fileID: 952222589}
+  activationDelay: 4
 --- !u!114 &2107692702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20861,10 +20862,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7725237841271516432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27668ddcb49959146a816e5c89d15c1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 054dc950ab54f4b49825d00d4df13235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UnlockSoundEvent: event:/Record Player
+  phone: {fileID: 2107692701}
+  unlockDelay: 10
 --- !u!1 &7758159148402521910
 GameObject:
   m_ObjectHideFlags: 0

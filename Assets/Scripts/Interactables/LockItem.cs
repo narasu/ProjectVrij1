@@ -7,7 +7,7 @@ public class LockItem : MonoBehaviour
     [FMODUnity.EventRef][Tooltip("Sound to play when this object is unlocked")] public string UnlockSoundEvent = "";
     protected FMOD.Studio.EventInstance unlockSound;
 
-    private bool unlocked = false;
+    protected bool unlocked = false;
 
     private void Awake()
     {
@@ -20,17 +20,16 @@ public class LockItem : MonoBehaviour
     }
 
     //Unlock this item and play its unlock sound
-    public void Unlock()
+    public virtual void Unlock()
     {
         if (unlocked)
             return;
 
         unlockSound.start();
+
         unlocked = true;
     }
 
-    //considering moving this bit to its own class
-    //as it is behavior specific to the record player that could break sub-classes
     private void OnDisable()
     {
         if (unlockSound.isValid())

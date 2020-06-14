@@ -45,10 +45,16 @@ public class PlayerLook : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastDistance)) 
         {
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            SetTarget(hit.transform.GetComponent<Interactable>());
-            if(lastTarget != GetTarget())
+            Interactable i = hit.transform.GetComponent<Interactable>();
+            
+            if(i!=null && lastTarget != i)
             {
-                hit.transform.gameObject.GetComponent<Interactable>()?.Highlight();
+                if (i.isActiveAndEnabled)
+                {
+                    i.Highlight();
+                    SetTarget(i);
+                }
+                
             }
         }
         else

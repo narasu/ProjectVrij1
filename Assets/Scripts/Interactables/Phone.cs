@@ -8,6 +8,7 @@ public class Phone : KeyItem
     private Rigidbody rb;
 
     [SerializeField] private GameObject phoneAudio;
+    [SerializeField] private float activationDelay;
     private SwitchableAudio switchableAudio;
     private Movable movable;
     private KeyItem keyItem;
@@ -16,9 +17,9 @@ public class Phone : KeyItem
     private void Awake()
     {
         //meshRenderer = GetComponent<MeshRenderer>();
-        rb = GetComponent<Rigidbody>();
-        movable = GetComponent<Movable>();
-        keyItem = GetComponent<KeyItem>();
+        rb = gameObject.GetComponent<Rigidbody>();
+        movable = gameObject.GetComponent<Movable>();
+        keyItem = gameObject.GetComponent<KeyItem>();
 
         //switchableAudio = GetComponent<SwitchableAudio>();
 
@@ -65,7 +66,7 @@ public class Phone : KeyItem
         switchableAudio.gameObject.SetActive(true);
 
 
-        //activate movable and KeyItem components
+        //activate physics and key
         movable.enabled = true;
         keyItem.enabled = true;
         rb.isKinematic = false;
