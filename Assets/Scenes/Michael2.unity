@@ -299,7 +299,7 @@ MonoBehaviour:
   lockTrigger: {fileID: 1744108436}
   recordPlayerPin: {fileID: 718847130}
   spinningSpeed: 3
-  phone: {fileID: 0}
+  phone: {fileID: 2107692701}
 --- !u!114 &278837190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,7 +786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &849587460
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -859,7 +859,7 @@ Transform:
   m_LocalScale: {x: 1.1298, y: 0.64022, z: 0.45241}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &849587464
 MonoBehaviour:
@@ -1063,7 +1063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &952222590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5496a8ec9c39f5e47a3edfe740999911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundEvent: 
+  SoundEvent: event:/Telephone
   playOnAwake: 1
   repeat: 1
   repeatInterval: 1
@@ -1088,12 +1088,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952222589}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.153847, y: -0.75519085, z: 2.9721441}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -28.885, y: 2.44, z: 1.075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1184614499
 GameObject:
@@ -1851,7 +1851,7 @@ Transform:
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2018630958
 GameObject:

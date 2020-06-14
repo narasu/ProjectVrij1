@@ -36,7 +36,7 @@ public class Phone : KeyItem
 
     private void Update()
     {
-        phoneAudio.transform.position = transform.position;
+        phoneAudio.transform.position = gameObject.transform.position;
         
 
 
