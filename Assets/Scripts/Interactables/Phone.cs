@@ -8,7 +8,6 @@ public class Phone : KeyItem
     private Rigidbody rb;
 
     [SerializeField] private GameObject phoneAudio;
-    [SerializeField] private float activationDelay;
     private SwitchableAudio switchableAudio;
     private Movable movable;
     private KeyItem keyItem;
