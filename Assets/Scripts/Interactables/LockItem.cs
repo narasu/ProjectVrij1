@@ -14,7 +14,7 @@ public class LockItem : MonoBehaviour
         unlockSound = FMODUnity.RuntimeManager.CreateInstance(UnlockSoundEvent);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         unlockSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
     }
