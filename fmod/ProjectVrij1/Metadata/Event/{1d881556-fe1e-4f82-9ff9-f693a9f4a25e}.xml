@@ -216,7 +216,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{e239f06c-fbbe-4721-9921-52bb0c3d0ce7}">
 		<property name="volume">
-			<value>1</value>
+			<value>-26.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 4</value>
@@ -432,7 +432,6 @@
 	<object class="MixerBusEffectChain" id="{a6eee780-f19f-450f-970e-2ee7205ee911}">
 		<relationship name="effects">
 			<destination>{85bd6884-792c-41f9-937f-10515be8f695}</destination>
-			<destination>{bd11c1a9-42c5-479b-b12c-7300ac3fa88a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a94b5e3f-58c0-4a84-be4e-c9dc2c2dfa5a}" />
@@ -471,6 +470,7 @@
 		<relationship name="effects">
 			<destination>{186865bd-1f90-4f70-a069-71f600757880}</destination>
 			<destination>{b27435fc-cd80-4dc1-a34f-5ea478aa0cfb}</destination>
+			<destination>{cdd9bb2a-c2d6-464b-be2c-b7f6f6e1d04b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{dcebdb79-3459-44c6-81e7-158c423bd4ee}" />
@@ -691,22 +691,10 @@
 		<relationship name="effects">
 			<destination>{0a24cc65-4096-4e83-b06b-858b0b187616}</destination>
 			<destination>{31b2fcd0-86f6-48e9-8d41-3be931974999}</destination>
-			<destination>{b02e39c1-f9cd-49cb-aaea-9755a8fce0d9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d0c26135-3edb-49de-8cb2-bf6c1516df1a}" />
 	<object class="MixerBusFader" id="{85bd6884-792c-41f9-937f-10515be8f695}" />
-	<object class="SpatialiserEffect" id="{bd11c1a9-42c5-479b-b12c-7300ac3fa88a}">
-		<property name="maximumDistance">
-			<value>250</value>
-		</property>
-		<property name="soundSize">
-			<value>2</value>
-		</property>
-		<property name="minimumExtent">
-			<value>20</value>
-		</property>
-	</object>
 	<object class="MixerBusFader" id="{252a41b2-709b-4637-8006-f47c26165373}" />
 	<object class="MixerSend" id="{52367f34-0fc7-40dc-ac47-e05ba557c1c5}">
 		<property name="level">
@@ -777,6 +765,17 @@
 		<relationship name="mixerReturn">
 			<destination>{59a23c63-9b6a-4809-b898-a7e818f67885}</destination>
 		</relationship>
+	</object>
+	<object class="SFXReverbEffect" id="{cdd9bb2a-c2d6-464b-be2c-b7f6f6e1d04b}">
+		<property name="decayTime">
+			<value>950</value>
+		</property>
+		<property name="wetLevel">
+			<value>0</value>
+		</property>
+		<property name="dryLevel">
+			<value>-22</value>
+		</property>
 	</object>
 	<object class="AutomationPoint" id="{32b6369e-f45d-4f73-a8ba-d4a65f4f3842}">
 		<property name="position">
@@ -1163,5 +1162,4 @@
 			<value>20</value>
 		</property>
 	</object>
-	<object class="PitchShifterEffect" id="{b02e39c1-f9cd-49cb-aaea-9755a8fce0d9}" />
 </objects>

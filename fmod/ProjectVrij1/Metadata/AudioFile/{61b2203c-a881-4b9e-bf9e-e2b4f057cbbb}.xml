@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{61b2203c-a881-4b9e-bf9e-e2b4f057cbbb}">
+		<property name="assetPath">
+			<value>362610__fxkid2__cute-walk-run-a1.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.312</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f510fb22-a3ad-49fc-adda-a2fcf81ffd29}</destination>
+		</relationship>
+	</object>
+</objects>
