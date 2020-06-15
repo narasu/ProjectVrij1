@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: kleinevis_texture
-  m_Shader: {fileID: -6465566751694194690, guid: c20ca7f9a3a30144d809264ba9248ead,
+  m_Name: WhiteRealWorldMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: e03e7c84a1c72634da14127b545daa24,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,12 +20,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_B6791F91:
-        m_Texture: {fileID: 2800000, guid: 5bf72805040aa374b8c1e79a27d1b448, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 5bf72805040aa374b8c1e79a27d1b448, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -37,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5bf72805040aa374b8c1e79a27d1b448, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -53,12 +49,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_4BBEB5A6: -0.67
-    - Vector1_537FB170: -0.52
-    - Vector1_5AA6E892: 1.16
-    - Vector1_83AEA38: 0.325
-    - Vector1_B5767645: 0.275
-    - Vector1_D54F8EEB: 0
+    - Vector1_1D95B4B6: 0
+    - Vector1_23841856: 0
+    - Vector1_91E9A6DB: 0
+    - Vector1_DF55ED2E: -1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -81,19 +75,14 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_340EDB9B: {r: 0, g: 0, b: 0, a: 1}
-    - Color_5CEF159E: {r: 0.80383444, g: 0, b: 1, a: 1}
-    - Color_9A009051: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
-    - Color_9E074024: {r: 1, g: 0.51984894, b: 0, a: 1}
-    - Color_B7E8C3FE: {r: 0.08962262, g: 0.629515, b: 1, a: 0}
-    - Color_CFDDE301: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
-    - Color_DDECD8B3: {r: 1, g: 0, b: 0.94925976, a: 0}
-    - Color_E0AC95A0: {r: 0, g: 1, b: 0, a: 0}
+    - Color_8B4764A7: {r: 1, g: 1, b: 1, a: 0}
+    - Color_B0AF4BA0: {r: 0.9669811, g: 1, b: 0.9983333, a: 0}
+    - Color_DB3318F0: {r: 0.9391687, g: 0.98959917, b: 0.990566, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
---- !u!114 &7346185709073748227
+--- !u!114 &2722288635287472253
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

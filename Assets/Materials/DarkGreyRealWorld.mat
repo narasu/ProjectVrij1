@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7735988916338406344
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -7,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 2
-  m_Shader: {fileID: -6465566751694194690, guid: 6509d41495a76804b86f8f96468e69d1,
+  m_Name: DarkGreyRealWorld
+  m_Shader: {fileID: -6465566751694194690, guid: e03e7c84a1c72634da14127b545daa24,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,10 +33,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_B6791F91:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -53,12 +62,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_4BBEB5A6: -0.34
-    - Vector1_537FB170: -0.03
-    - Vector1_5AA6E892: 1.02
-    - Vector1_83AEA38: 0.307
-    - Vector1_B5767645: 0
-    - Vector1_D54F8EEB: 0
+    - Vector1_1D95B4B6: 0
+    - Vector1_23841856: 0
+    - Vector1_91E9A6DB: 0
+    - Vector1_DF55ED2E: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -81,25 +88,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_9A009051: {r: 0.38679248, g: 0.38508165, b: 0.19522074, a: 0}
-    - Color_B7E8C3FE: {r: 0, g: 0, b: 0, a: 0}
-    - Color_CFDDE301: {r: 0, g: 0.5568628, b: 1, a: 0}
-    - Color_DDECD8B3: {r: 1, g: 0, b: 0.99009085, a: 0}
-    - Color_E0AC95A0: {r: 0, g: 0.4666667, b: 0, a: 0}
-    - _BaseColor: {r: 0.8745099, g: 0.909804, b: 0.1137255, a: 1}
+    - Color_8B4764A7: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0}
+    - Color_B0AF4BA0: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0}
+    - Color_DB3318F0: {r: 0.29343182, g: 0.34679884, b: 0.3962264, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
---- !u!114 &459779540548969012
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
