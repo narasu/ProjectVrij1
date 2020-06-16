@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bubblegum_Camera_World
-  m_Shader: {fileID: -6465566751694194690, guid: 474d7ed934f1904428445e5fff2c4765, type: 3}
+  m_Name: Telefoon
+  m_Shader: {fileID: -6465566751694194690, guid: d6a90952b7c7a444483046cfab865389,type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
