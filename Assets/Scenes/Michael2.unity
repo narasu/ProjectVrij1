@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -631,19 +631,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8332605073158008984, guid: d7ae8024552e9a342a63a1bbd5a63a9f,
         type: 3}
-      propertyPath: mainMenuObject
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8332605073158008984, guid: d7ae8024552e9a342a63a1bbd5a63a9f,
-        type: 3}
       propertyPath: pauseObject
       value: 
       objectReference: {fileID: 2575635807698996341}
-    - target: {fileID: 8332605073158008984, guid: d7ae8024552e9a342a63a1bbd5a63a9f,
-        type: 3}
-      propertyPath: deadMenuObject
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8332605073158008984, guid: d7ae8024552e9a342a63a1bbd5a63a9f,
         type: 3}
       propertyPath: winMenuObject
