@@ -40,7 +40,7 @@ public class PlayerLook : MonoBehaviour
         CameraRotation();
 
         lastTarget = GetTarget();
-        SetTarget(null);
+        //SetTarget(null);
         RaycastHit hit;
         //Cast a ray and scan for an Interactable target
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, raycastDistance)) 
@@ -57,10 +57,10 @@ public class PlayerLook : MonoBehaviour
                 }
                 
             }
-        }
-        else
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastDistance, Color.white);
+            else if (lastTarget!=i)
+            {
+                SetTarget(null);
+            }
         }
     }
 
