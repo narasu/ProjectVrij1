@@ -71,7 +71,7 @@ public class World : MonoBehaviour
     private void Update()
     {
         //Input event for switching between worlds
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && Player.Instance.HasCamera)
         {
             //make sure the player can't carry objects from one world to another
             // (but what kind of gameplay would be possible if the player could?)

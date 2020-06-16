@@ -30,8 +30,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public float forwardInput, horizInput;
     private Vector3 forwardMovement, rightMovement, movement;
 
-    
-    private bool hasCamera = false;
+
+    [HideInInspector] public bool HasCamera { get; private set; } = false;
 
     //PRess E Tutorial Text (will move to different class later)
     [SerializeField] private GameObject tutorialText;
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
 
     public void GetCamera()
     {
-        hasCamera = true;
+        HasCamera = true;
         tutorialText.SetActive(true);
         StartCoroutine("TextTimer");
     }
