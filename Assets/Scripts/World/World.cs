@@ -35,6 +35,7 @@ public class World : MonoBehaviour
     private bool hasCamera = false;
 
     private WorldFSM fsm;
+    [HideInInspector] public SkyboxManager skyboxManager;
 
     /*    Audio    */
     [Header("Audio")]
@@ -45,10 +46,11 @@ public class World : MonoBehaviour
 
     private void Awake()
     {
-        //Initialize variables;
+        //Initialize things;
         instance = this;
         worldState = 0;
         SetFadeTime();
+        skyboxManager = GetComponent<SkyboxManager>();
 
         //setup FSM
         fsm = new WorldFSM();
@@ -175,12 +177,14 @@ public class World : MonoBehaviour
     {
         mainWorld.SetActive(true);
         altWorld.SetActive(false);
+        skyboxManager.ToMainWorld();
     }
 
     public void EnableAltWorld()
     {
         mainWorld.SetActive(false);
         altWorld.SetActive(true);
+        skyboxManager.ToAltWorld();
     }
 
     public void GotoMain()
