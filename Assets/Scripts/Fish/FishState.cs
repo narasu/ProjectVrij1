@@ -24,12 +24,12 @@ public class FishIdleState : FishState
 {
     public override void Enter()
     {
-        Debug.Log("hoi");
+      
     }
 
     public override void Update()
     {
-        //Vector3.Distance(fish.transform.position, fish.Player.position) > 2
+       
         if (fish.navMeshAgent.velocity != Vector3.zero)
         {
             fish.GotoWalking();
@@ -46,8 +46,7 @@ public class FishWalkingState : FishState
 {
     public override void Enter()
     {
-       // fish.footsteps.PlaySound();
-        Debug.Log("wait for me");
+      
         fish.walkingSound.PlaySound();
     }
 
