@@ -22,13 +22,12 @@ public class GameManager : MonoBehaviour
 
     private GameFSM fsm;
 
-
+    [HideInInspector] public bool IsPaused { get; private set; }
 
     private void Awake()
     {
         fsm = new GameFSM();
         fsm.Initialize();
-
 
         instance = FindObjectOfType<GameManager>();
     }
@@ -37,11 +36,19 @@ public class GameManager : MonoBehaviour
     {
         if (fsm.CurrentStateType == GameStateType.Play)
         {
+            IsPaused = true;
+            Player.Instance.enabled = false;
+            PlayerLook.Instance.enabled = false;
+            
             GotoPause();
             return;
         }
+
         if (fsm.CurrentStateType == GameStateType.Pause)
         {
+            IsPaused = false;
+            Player.Instance.enabled = true;
+            PlayerLook.Instance.enabled = true;
             GotoPlay();
         }
     }
@@ -60,24 +67,6 @@ public class GameManager : MonoBehaviour
             HandlePause();
         }
     }
-
-    //Start the scene (this method is called from UI onclick)
-    public void StartLevel()
-    {
-        //instantiate dynamic objects, set positions etc etc etc
-    }
-
-    //End the scene
-    public void EndLevel()
-    {
-        //reset positions, deactivate/destroy objects, return to initial state, etc etc etc
-    }
-    /*
-    public void EnableText(TutorialText t)
-    {
-
-    }
-    */
     public void GotoPlay()
     {
         fsm.GotoState(GameStateType.Play);

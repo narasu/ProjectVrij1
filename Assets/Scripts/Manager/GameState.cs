@@ -6,6 +6,14 @@ public enum GameStateType { Play, Pause, Win }
 
 public abstract class GameState
 {
+    protected GameFSM owner;
+    protected GameManager gameManager;
+
+    public void Initialize(GameFSM owner)
+    {
+        this.owner = owner;
+        gameManager = owner.owner;
+    }
     public abstract void Enter();
     public abstract void Update();
     public abstract void Exit();
@@ -19,6 +27,7 @@ public class PlayState : GameState
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1.0f;
+        
     }
     public override void Update()
     {
@@ -59,7 +68,6 @@ public class WinState : GameState
     public override void Enter()
     {
         GameManager.Instance.winMenuObject.SetActive(true);
-        GameManager.Instance.EndLevel();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f;

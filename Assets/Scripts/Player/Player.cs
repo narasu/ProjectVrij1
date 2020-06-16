@@ -63,21 +63,21 @@ public class Player : MonoBehaviour
     private void Update()
     {
         //update movement vectors based on player input
-        forwardInput = Input.GetAxisRaw("Vertical");
-        horizInput = Input.GetAxisRaw("Horizontal");
+            forwardInput = Input.GetAxisRaw("Vertical");
+            horizInput = Input.GetAxisRaw("Horizontal");
 
 
-        walkVector = new Vector2(horizInput, forwardInput);
-        
+            walkVector = new Vector2(horizInput, forwardInput);
 
-        //Input event for interacting with objects
-        if (Input.GetMouseButtonDown(0))
-        {
-            Interact();
-        }
 
-        //run update on current state
-        fsm.UpdateState();
+            //Input event for interacting with objects
+            if (Input.GetMouseButtonDown(0))
+            {
+                Interact();
+            }
+
+            //run update on current state
+            fsm.UpdateState();
     }
 
     public void GetCamera()

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameFSM
 {
-    
+    public GameManager owner;
+
     private Dictionary<GameStateType, GameState> states;
 
     public GameStateType CurrentStateType { get; private set; }
