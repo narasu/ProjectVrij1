@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646950675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.75}
+  m_LocalPosition: {x: -0, y: -0.39, z: 3.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4858582591732244226}
@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4858582591732244231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.552, z: 0}
+  m_LocalPosition: {x: 0, y: 3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1646950676}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 4858582591802880304}
   lookVector: {x: 0, y: 0}
-  raycastDistance: 4.3
+  raycastDistance: 12.5
   mouseSensitivity: 2.8
 --- !u!114 &4858582591732244224
 MonoBehaviour:
@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 4858582591802880304}
   - component: {fileID: 4858582591802880305}
   - component: {fileID: 4858582591802880318}
+  - component: {fileID: 1607448737}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -283,17 +284,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ca163c72d9fe44aa8f6f10ced0cf56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 8
+  inHand: {fileID: 0}
+  movementSpeed: 15
   walkVector: {x: 0, y: 0}
-  mainWorld: {fileID: 0}
-  altWorld: {fileID: 0}
-  cameraFlash: {fileID: 0}
-  toAltFadeIn: 0.09
-  toAltFadeOut: 0.08
-  toMainFadeIn: 0.05
-  toMainFadeOut: 0.03
-  CameraOnEvent: event:/Camera On
-  CameraOffEvent: event:/Camera Off
+  forwardInput: 0
+  horizInput: 0
+  tutorialText: {fileID: 0}
+  footsteps: {fileID: 0}
 --- !u!143 &4858582591802880318
 CharacterController:
   m_ObjectHideFlags: 0
@@ -305,10 +302,28 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 5
+  m_Height: 10
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1607448737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858582591802880307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5496a8ec9c39f5e47a3edfe740999911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundEvent: event:/Walking
+  playOnAwake: 0
+  repeat: 1
+  repeatInterval: 0.4
+  allowFadeOut: 0
+  parameterName: Walking WorldType
