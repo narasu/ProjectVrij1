@@ -415,7 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1986860886}
   navMeshAgent: {fileID: 0}
-  footsteps: {fileID: 0}
+  walkingSound: {fileID: 0}
 --- !u!195 &283648530
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -438,6 +438,23 @@ NavMeshAgent:
   m_BaseOffset: 0.92775464
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &283648531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283648527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1005230fd45a284dae8a3df15bfab16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundEvent: event:/Fish Footsteps
+  playOnAwake: 0
+  repeat: 1
+  repeatInterval: 0.42
+  allowFadeOut: 0
 --- !u!1001 &321778570
 PrefabInstance:
   m_ObjectHideFlags: 0

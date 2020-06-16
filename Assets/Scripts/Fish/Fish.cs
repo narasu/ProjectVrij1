@@ -21,16 +21,15 @@ public class Fish : MonoBehaviour
     public Transform Player;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
-    [HideInInspector] public SwitchableAudio footsteps;
+    [HideInInspector] public OneWorldAudio walkingSound;
 
     private void Awake()
     {
         //Initialize variables;
         instance = this;
-      
-        footsteps = GetComponent<SwitchableAudio>();
-        //worldState = 0;
-        //SetFadeTime();
+
+        walkingSound = GetComponent<OneWorldAudio>();
+
         navMeshAgent = GetComponent<NavMeshAgent>();
         //setup FSM
         fsm = new FishFSM();
@@ -41,15 +40,17 @@ public class Fish : MonoBehaviour
 
     private void Start()
     {
-        //GotoFirstPerson();
+        
         GotoIdle();
     }
 
     private void Update()
     {
+        
+        navMeshAgent.SetDestination(Player.position);
+
         //run update on current state
         fsm.UpdateState();
-        navMeshAgent.SetDestination(Player.position);
     }
 
   

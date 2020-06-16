@@ -48,6 +48,7 @@ public class FishWalkingState : FishState
     {
        // fish.footsteps.PlaySound();
         Debug.Log("wait for me");
+        fish.walkingSound.PlaySound();
     }
 
     public override void Update()
@@ -62,6 +63,6 @@ public class FishWalkingState : FishState
 
     public override void Exit()
     {
-  
+        fish.walkingSound.StopSound();
     }
 }
