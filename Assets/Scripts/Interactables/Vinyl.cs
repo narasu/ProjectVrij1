@@ -7,6 +7,7 @@ public class Vinyl : KeyItem
     [SerializeField] private Transform recordPlayerPin;
     [SerializeField] private float spinningSpeed = 3.0f;
     private bool unlocked = false;
+    public Phone phone;
     private void Update()
     {
         //Spin the record :D
@@ -25,7 +26,7 @@ public class Vinyl : KeyItem
         if (other == lockTrigger && !unlocked)
         {
             Destroy(GetComponent<Rigidbody>());
-            Destroy(GetComponent<Movable>()); //might be better to use enabled = false.
+            Destroy(GetComponent<Movable>()); //might be better to use enabled = false?
             transform.position = recordPlayerPin.position;
             transform.rotation = recordPlayerPin.rotation;
             unlocked = true;
