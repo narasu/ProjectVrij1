@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FMOD.Studio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,11 @@ public class SwitchableAudio : MonoBehaviour
     [SerializeField] private bool repeat = true;
     [SerializeField] [Tooltip("How long until this audio repeats? (in seconds)")] private float repeatInterval = 0.5f;
     [SerializeField] [Tooltip("Should this audio be allowed to fade out when stopped?")] private bool allowFadeOut = false;
+
+    [SerializeField] private string parameterName;
+
+    private bool coroutineRunning;
+
     FMOD.Studio.EventInstance sound;
     FMOD.Studio.PARAMETER_ID soundParameterId;
 
@@ -27,13 +33,13 @@ public class SwitchableAudio : MonoBehaviour
         FMOD.Studio.EventDescription soundEventDescription;
         sound.getDescription(out soundEventDescription);
         FMOD.Studio.PARAMETER_DESCRIPTION soundParameterDescription;
-        soundEventDescription.getParameterDescriptionByName("WorldType", out soundParameterDescription);
+        soundEventDescription.getParameterDescriptionByName(parameterName, out soundParameterDescription);
         soundParameterId = soundParameterDescription.id;
 
         //depending on settings, play audio once or repeat
         if (playOnAwake)
         {
-            PlaySound(repeat);
+            PlaySound();
         }
     }
 
@@ -42,6 +48,15 @@ public class SwitchableAudio : MonoBehaviour
     {
         while (true)
         {
+            coroutineRunning = true;
+            PLAYBACK_STATE isPlaying;
+            sound.getPlaybackState(out isPlaying);
+
+
+            if(isPlaying == PLAYBACK_STATE.PLAYING)
+            {
+                sound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            }
             sound.start();
             yield return new WaitForSeconds(repeatInterval);
         }
@@ -52,12 +67,12 @@ public class SwitchableAudio : MonoBehaviour
         Set3DAttributes();
 
         //update the WorldType parameter
-        sound.setParameterByID(soundParameterId, Player.Instance.worldState);
+        sound.setParameterByID(soundParameterId, World.Instance.worldState);
     }
 
-    //by default repeat = false, but if playOnAwake == true it will always use the value set in the inspector
-    public void PlaySound(bool repeat = false)
+    public void PlaySound()
     {
+        
         if (!repeat)
         {
             sound.start();
@@ -65,6 +80,23 @@ public class SwitchableAudio : MonoBehaviour
         else
         {
             StartCoroutine("PlaySoundRepeat");
+        }
+    }
+
+    public void StopSound()
+    {
+        if (coroutineRunning)
+        {
+            StopCoroutine("PlaySoundRepeat");
+        }
+
+        if (allowFadeOut)
+        {
+            sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+        else
+        {
+            sound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
     }
 
@@ -82,14 +114,7 @@ public class SwitchableAudio : MonoBehaviour
     //fade or hard stop audio depending on settings
     private void OnDestroy()
     {
-        if (allowFadeOut)
-        {
-            sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        }
-        else
-        {
-            sound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        }
+        StopSound();
         sound.release();
     }
 }

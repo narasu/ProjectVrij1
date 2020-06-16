@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerStateType { FirstPerson, Camera }
+public enum PlayerStateType { Idle, Walking }
 
 public abstract class PlayerState
 {
@@ -20,42 +20,46 @@ public abstract class PlayerState
     public abstract void Exit();
 }
 
-public class FirstPersonState : PlayerState
+public class IdleState : PlayerState
 {
     public override void Enter()
     {
-        //InputManager.Instance.controls.FirstPerson.Enable();
-        player.EnableMainWorld();
         
-
     }
 
     public override void Update()
     {
-        player.Walk();
+        if (player.forwardInput!=0 || player.horizInput!=0)
+        {
+            player.GotoWalking();
+        }
     }
 
     public override void Exit()
     {
-        //InputManager.Instance.controls.FirstPerson.Disable();
+        
     }
 }
 
-public class CameraState : PlayerState
+public class WalkingState : PlayerState
 {
     public override void Enter()
     {
-        //InputManager.Instance.controls.FirstPerson.Enable();
-        player.EnableAltWorld();
+        player.footsteps.PlaySound();
     }
 
     public override void Update()
     {
+        if(player.forwardInput==0 && player.horizInput==0)
+        {
+            player.GotoIdle();
+        }
         player.Walk();
+        
     }
 
     public override void Exit()
     {
-        //InputManager.Instance.controls.FirstPerson.Disable();
+        player.footsteps.StopSound();
     }
 }
