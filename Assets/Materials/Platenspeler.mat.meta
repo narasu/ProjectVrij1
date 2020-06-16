@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c3bc9bb4b5f6bcf45b25d685d113deb7
+=======
+<<<<<<< HEAD
+guid: bd76f72210a289b45a7653e6f22dd822
+=======
+guid: 1e8814717b045e04b8985a04cd08dfde
+>>>>>>> origin/faye_designkopie
+>>>>>>> f529e10e2e02ce8bc6b5c8160f7f9ab7064fceb3
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
