@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum FishStateType { Idle, Walking }
+public enum FishStateType { FishIdle, FishWalking }
 
 public abstract class FishState
 {
@@ -20,16 +20,17 @@ public abstract class FishState
     public abstract void Exit();
 }
 
-public class IdleState : FishState
+public class FishIdleState : FishState
 {
     public override void Enter()
     {
-        
+        Debug.Log("hoi");
     }
 
     public override void Update()
     {
-        if (fish.forwardInput!=0 || fish.horizInput!=0)
+        //Vector3.Distance(fish.transform.position, fish.Player.position) > 2
+        if (fish.navMeshAgent.velocity != Vector3.zero)
         {
             fish.GotoWalking();
         }
@@ -41,25 +42,26 @@ public class IdleState : FishState
     }
 }
 
-public class WalkingState : FishState
+public class FishWalkingState : FishState
 {
     public override void Enter()
     {
-        fish.footsteps.PlaySound();
+       // fish.footsteps.PlaySound();
+        Debug.Log("wait for me");
     }
 
     public override void Update()
     {
-        if(fish.forwardInput==0 && fish.horizInput==0)
+        if(fish.navMeshAgent.velocity == Vector3.zero)
         {
             fish.GotoIdle();
         }
-        fish.Walk();
+      
         
     }
 
     public override void Exit()
     {
-        fish.footsteps.StopSound();
+  
     }
 }

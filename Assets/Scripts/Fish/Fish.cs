@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.AI;
+
 
 public class Fish : MonoBehaviour
 {
@@ -16,25 +17,9 @@ public class Fish : MonoBehaviour
     }
 
     private FishFSM fsm;
-    
-    /*    Interactions    */
-    //Object the player is looking at
-    private Interactable lookingAt;
-    //Object of type movable that the player is holding
-    [HideInInspector] public Movable inHand;
 
-    /*    Character Movement    */
-    private CharacterController charController;
-    [SerializeField] private float movementSpeed = 8.0f;
-    [HideInInspector] public Vector2 walkVector;
-    [HideInInspector] public float forwardInput, horizInput;
-    private Vector3 forwardMovement, rightMovement, movement;
-
-    
-    private bool hasCamera = false;
-
-    //PRess E Tutorial Text (will move to different class later)
-    [SerializeField] private GameObject tutorialText;
+    public Transform Player;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
 
     [HideInInspector] public SwitchableAudio footsteps;
 
@@ -42,16 +27,16 @@ public class Fish : MonoBehaviour
     {
         //Initialize variables;
         instance = this;
-        charController = GetComponent<CharacterController>();
+      
         footsteps = GetComponent<SwitchableAudio>();
         //worldState = 0;
         //SetFadeTime();
-
+        navMeshAgent = GetComponent<NavMeshAgent>();
         //setup FSM
         fsm = new FishFSM();
         fsm.Initialize(this);
-        fsm.AddState(FishStateType.Idle, new IdleState());
-        fsm.AddState(FishStateType.Walking, new WalkingState());
+        fsm.AddState(FishStateType.FishIdle, new FishIdleState());
+        fsm.AddState(FishStateType.FishWalking, new FishWalkingState());
     }
 
     private void Start()
@@ -62,96 +47,28 @@ public class Fish : MonoBehaviour
 
     private void Update()
     {
-        //update movement vectors based on player input
-        forwardInput = Input.GetAxisRaw("Vertical");
-        horizInput = Input.GetAxisRaw("Horizontal");
-
-
-        walkVector = new Vector2(horizInput, forwardInput);
-        
-
-        //Input event for interacting with objects
-        if (Input.GetMouseButtonDown(0))
-        {
-            Interact();
-        }
-
         //run update on current state
         fsm.UpdateState();
+        navMeshAgent.SetDestination(Player.position);
     }
 
-    public void GetCamera()
-    {
-        hasCamera = true;
-        tutorialText.SetActive(true);
-        StartCoroutine("TextTimer");
-    }
+  
 
-    private IEnumerator TextTimer()
-    {
-        int i = 0;
-        while (i==0)
-        {
-            i++;
-            yield return new WaitForSeconds(1.0f);
-            tutorialText.SetActive(false);
-        }
-    }
 
     //player movement
     public void Walk()
     {
-        forwardMovement = transform.forward * walkVector.y;
-        rightMovement = transform.right * walkVector.x;
-
-        movement = Vector3.Normalize(forwardMovement + rightMovement) * movementSpeed;
-        charController.SimpleMove(movement);
+        //NAV MESH AGENT SET DESTINATION + TRANSFORM
+        
     }
-
-    //Interact with objects
-    public void Interact()
-    {
-        //does the player have something in hand? if so, drop. 
-        if (inHand != null)
-        {
-            if (inHand.GetComponent<Rigidbody>()==null) //check if an object got removed but failed to clear
-            {
-                ClearHand();
-                return;
-            }
-            inHand.Drop();
-            ClearHand();
-            return;
-        }
-
-        // is the player looking at a valid Interactable target?
-        lookingAt = FishLook.Instance.GetTarget();
-        if (lookingAt == null)
-            return;
-
-        //set target to interacting state
-        lookingAt.GotoInteracting();
-
-        //is the object movable? if so, grab
-        inHand = lookingAt.GetComponent<Movable>();
-        if (inHand != null)
-        {
-            inHand.Grab();
-        }
-    }
-
-    public void ClearHand()
-    {
-        inHand = null;
-    }
-
+   
 
     public void GotoIdle()
     {
-        fsm.GotoState(FishStateType.Idle);
+        fsm.GotoState(FishStateType.FishIdle);
     }
     public void GotoWalking()
     {
-        fsm.GotoState(FishStateType.Walking);
+        fsm.GotoState(FishStateType.FishWalking);
     }
 }
