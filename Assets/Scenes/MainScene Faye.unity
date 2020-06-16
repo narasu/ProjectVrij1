@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3be6723062abd084a87145cab565e7f2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1216,12 +1216,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1985209024}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &924465583 stripped
+--- !u!4 &924465583
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 5948116001188803834, guid: 38f9015a65fb19144a8d8ce455b72d6e,
     type: 3}
   m_PrefabInstance: {fileID: 437780934}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484407835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1038517801}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &958081271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1291,6 +1300,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 841dad48b889e5d48b260f9874b1c726, type: 3}
+--- !u!1 &1038517800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 437780934}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038517801}
+  m_Layer: 0
+  m_Name: RealWorld (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1038517801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 437780934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038517800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 924465583}
+  m_Father: {fileID: 2018630959}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088399435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3123235173334966890, guid: 2938f4e596b11b64095abbc981ee656d,
@@ -1335,6 +1375,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 591294895}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1484407835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 437780934}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924465583}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &1490093106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1923,7 +1979,7 @@ Transform:
   - {fileID: 808230967}
   - {fileID: 532038433}
   - {fileID: 1088399436}
-  - {fileID: 924465583}
+  - {fileID: 1038517801}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
