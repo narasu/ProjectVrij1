@@ -12,6 +12,7 @@ public class Phone : KeyItem
     private Movable movable;
     private KeyItem keyItem;
 
+    private Renderer renderer;
     private Material material;
     [SerializeField] private Material ActivatedMaterial;
 
@@ -22,7 +23,8 @@ public class Phone : KeyItem
         rb = gameObject.GetComponent<Rigidbody>();
         movable = gameObject.GetComponent<Movable>();
         keyItem = gameObject.GetComponent<KeyItem>();
-        material = gameObject.GetComponent<Material>();
+        renderer = gameObject.GetComponent<Renderer>();
+        material = renderer.material;
 
         //switchableAudio = GetComponent<SwitchableAudio>();
 
@@ -53,7 +55,8 @@ public class Phone : KeyItem
         movable.enabled = true;
         keyItem.enabled = true;
         rb.isKinematic = false;
-        material = ActivatedMaterial;
+
+        renderer.material = ActivatedMaterial;
     }
 
     protected override void OnTriggerEnter(Collider other)
