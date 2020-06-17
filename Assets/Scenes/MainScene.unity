@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &98013665
 Transform:
   m_ObjectHideFlags: 0
@@ -1200,6 +1200,7 @@ MonoBehaviour:
   lockItem: {fileID: 808230967}
   lockTrigger: {fileID: 1655993268}
   phoneAudio: {fileID: 749749086}
+  ActivatedMaterial: {fileID: 2100000, guid: eff30ce9e9cadb449a57989bdf0f2c59, type: 2}
 --- !u!64 &532038439
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2427,7 +2428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2018630959
 Transform:
   m_ObjectHideFlags: 0
