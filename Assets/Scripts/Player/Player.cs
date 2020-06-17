@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     {
         //GotoFirstPerson();
         GotoIdle();
+        TutorialManager.Instance.DisplayText(Tutorial.WASD, true, 3.0f);
     }
 
     private void Update()
@@ -84,18 +85,7 @@ public class Player : MonoBehaviour
     {
         HasCamera = true;
         tutorialText.SetActive(true);
-        StartCoroutine("TextTimer");
-    }
-
-    private IEnumerator TextTimer()
-    {
-        int i = 0;
-        while (i==0)
-        {
-            i++;
-            yield return new WaitForSeconds(1.0f);
-            tutorialText.SetActive(false);
-        }
+        TutorialManager.Instance.DisplayText(Tutorial.E, true, 3.0f);
     }
 
     //player movement
