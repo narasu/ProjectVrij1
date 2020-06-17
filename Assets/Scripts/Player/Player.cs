@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
     {
         //GotoFirstPerson();
         GotoIdle();
-        TutorialManager.Instance.DisplayText(Tutorial.WASD, true, 3.0f);
+        TutorialManager.Instance.DisplayText(Tutorial.WASD, true, 6.0f);
     }
 
     private void Update()

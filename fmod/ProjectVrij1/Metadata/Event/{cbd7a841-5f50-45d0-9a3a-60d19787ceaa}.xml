@@ -87,7 +87,11 @@
 			<destination>{9b481adb-f14f-4ab7-be97-4356b47e572f}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{06ca5d1b-0174-4852-9226-dd814c82862a}" />
+	<object class="Timeline" id="{06ca5d1b-0174-4852-9226-dd814c82862a}">
+		<property name="isProxyEnabled">
+			<value>false</value>
+		</property>
+	</object>
 	<object class="ParameterProxy" id="{adbd1500-184c-4294-9ae3-0e57d2d031fb}">
 		<relationship name="modules">
 			<destination>{134479c5-8a58-4476-b971-66cb9551c258}</destination>
@@ -122,7 +126,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{fafa3920-cfaf-4a33-9f05-25389574d705}">
 		<property name="volume">
-			<value>-2.5</value>
+			<value>-11.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -144,7 +148,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{57195016-d4f2-42ee-8b05-6f34386b9a20}">
 		<property name="volume">
-			<value>-13</value>
+			<value>-31</value>
 		</property>
 		<property name="name">
 			<value>Audio 3</value>
@@ -163,16 +167,13 @@
 		<property name="start">
 			<value>1</value>
 		</property>
-		<property name="looping">
-			<value>true</value>
-		</property>
 		<relationship name="audioFile">
 			<destination>{cc395959-dea8-4be7-a0bd-0cbb4a24d66c}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9b481adb-f14f-4ab7-be97-4356b47e572f}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-1</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -223,7 +224,7 @@
 			<value>1</value>
 		</property>
 		<property name="soundSize">
-			<value>2.10000014</value>
+			<value>3</value>
 		</property>
 		<property name="minimumExtent">
 			<value>104</value>

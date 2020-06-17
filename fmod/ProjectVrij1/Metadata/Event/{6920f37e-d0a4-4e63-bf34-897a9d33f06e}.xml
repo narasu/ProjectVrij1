@@ -123,6 +123,7 @@
 		<relationship name="effects">
 			<destination>{1cea099a-336a-4934-b11a-ec0301e6e1e5}</destination>
 			<destination>{08ae4532-7514-4024-838c-e3aff5eac823}</destination>
+			<destination>{ba510669-9b2e-42da-b1c4-dbeb37ce91f2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bf5c02bf-d774-4835-81cb-295ee2438741}" />
@@ -186,6 +187,17 @@
 		</property>
 		<property name="highCrossover">
 			<value>22000</value>
+		</property>
+	</object>
+	<object class="ObjectSpatialiserEffect" id="{ba510669-9b2e-42da-b1c4-dbeb37ce91f2}">
+		<property name="maximumDistance">
+			<value>45</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>3.29999995</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{7454e7ae-0778-4f2c-bc3e-10e684807621}" />

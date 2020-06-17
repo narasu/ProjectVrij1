@@ -118,6 +118,7 @@ public class World : MonoBehaviour
             GotoAlt();
             worldState = 1;
             PlayerLook.Instance.camera.fieldOfView = 65;
+            TutorialManager.Instance.HideText(Tutorial.E);
             return;
         }
         if (worldState == 1)
