@@ -1008,8 +1008,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2}
-  m_SizeDelta: {x: 2366, y: 1333}
+  m_AnchoredPosition: {x: 0, y: -120}
+  m_SizeDelta: {x: 864, y: 864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9077616442607454329
 CanvasRenderer:
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7bcce95af41221d42b56bee13e121442, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6cafdf8d8751e746af08c8d18ed5530, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1120,8 +1120,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2366, y: 1333}
+  m_AnchoredPosition: {x: 0, y: -120}
+  m_SizeDelta: {x: 864, y: 864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9077616443360394692
 CanvasRenderer:
@@ -1171,6 +1171,7 @@ GameObject:
   - component: {fileID: 9077616443909463160}
   - component: {fileID: 9077616443909463158}
   - component: {fileID: 6183553053687877931}
+  - component: {fileID: 9076011816480550031}
   m_Layer: 5
   m_Name: Left Mouse Button
   m_TagString: Untagged
@@ -1192,10 +1193,10 @@ RectTransform:
   m_Father: {fileID: 9077616443234235290}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 2366, y: 1333}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -110}
+  m_SizeDelta: {x: 864, y: 864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9077616443909463158
 CanvasRenderer:
@@ -1234,3 +1235,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9076011816480550031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9077616443909463163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 0
+  m_AspectRatio: 1
