@@ -37,24 +37,6 @@ public class Phone : KeyItem
     private void Update()
     {
         phoneAudio.transform.position = gameObject.transform.position;
-        
-
-
-        /*
-        if (Player.Instance.worldState == 0)
-        {
-            meshRenderer.enabled = true;
-            if (movable.enabled==true)
-            {
-                rb.isKinematic = false;
-            }
-        }
-        else
-        {
-            meshRenderer.enabled = false;
-            rb.isKinematic = true;
-        }
-        */
     }
 
     public void Activate()
