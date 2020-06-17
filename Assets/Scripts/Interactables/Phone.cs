@@ -13,7 +13,7 @@ public class Phone : KeyItem
     private KeyItem keyItem;
 
     private Material material;
-    [SerializeField] private Material HighlightMaterial;
+    [SerializeField] private Material ActivatedMaterial;
 
 
     private void Awake()
@@ -53,7 +53,7 @@ public class Phone : KeyItem
         movable.enabled = true;
         keyItem.enabled = true;
         rb.isKinematic = false;
-        material = HighlightMaterial;
+        material = ActivatedMaterial;
     }
 
     protected override void OnTriggerEnter(Collider other)
