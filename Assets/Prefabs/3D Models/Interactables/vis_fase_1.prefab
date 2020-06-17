@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 3599460337235757068}
   - component: {fileID: 5523907540821520954}
   - component: {fileID: 2275538061323357891}
+  - component: {fileID: 283648529}
+  - component: {fileID: 283648530}
+  - component: {fileID: 283648531}
   m_Layer: 0
   m_Name: vis_fase_1
   m_TagString: Untagged
@@ -25,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551835831377951263}
-  m_LocalRotation: {x: -0, y: 0.50497025, z: -0, w: 0.8631368}
-  m_LocalPosition: {x: -18.65671, y: -2.1798203, z: 15.517276}
+  m_LocalRotation: {x: -0, y: -0.8446555, z: -0, w: 0.53531027}
+  m_LocalPosition: {x: -19.122072, y: -2.1798203, z: 15.637131}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 60.659004, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -115.270004, z: 0}
 --- !u!33 &5523907540821520954
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -79,3 +82,57 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &283648529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551835831377951263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ae5d5be102c0d4e9d0b57ffcea888f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  walkingSound: {fileID: 0}
+--- !u!195 &283648530
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551835831377951263}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.179299
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 2.55
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.8555093
+  m_BaseOffset: 0.92775464
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &283648531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551835831377951263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1005230fd45a284dae8a3df15bfab16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundEvent: event:/Fish Footsteps
+  playOnAwake: 0
+  repeat: 1
+  repeatInterval: 0.42
+  allowFadeOut: 0
