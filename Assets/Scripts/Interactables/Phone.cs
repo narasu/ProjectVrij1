@@ -12,6 +12,9 @@ public class Phone : KeyItem
     private Movable movable;
     private KeyItem keyItem;
 
+    private Material material;
+    [SerializeField] private Material HighlightMaterial;
+
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class Phone : KeyItem
         rb = gameObject.GetComponent<Rigidbody>();
         movable = gameObject.GetComponent<Movable>();
         keyItem = gameObject.GetComponent<KeyItem>();
+        material = gameObject.GetComponent<Material>();
 
         //switchableAudio = GetComponent<SwitchableAudio>();
 
@@ -41,16 +45,15 @@ public class Phone : KeyItem
 
     public void Activate()
     {
-
         //gets enabled after timer elapsed
         //start playing sound using SwitchableAudio script
         switchableAudio.gameObject.SetActive(true);
-
 
         //activate physics and key
         movable.enabled = true;
         keyItem.enabled = true;
         rb.isKinematic = false;
+        material = HighlightMaterial;
     }
 
     protected override void OnTriggerEnter(Collider other)
