@@ -52,11 +52,10 @@ public class SwitchableAudio : MonoBehaviour
             PLAYBACK_STATE isPlaying;
             sound.getPlaybackState(out isPlaying);
 
-
-            /*if(isPlaying == PLAYBACK_STATE.PLAYING)
+            if(isPlaying == PLAYBACK_STATE.PLAYING)
             {
                 sound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            }*/
+            }
             sound.start();
             yield return new WaitForSeconds(repeatInterval);
         }
