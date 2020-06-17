@@ -6,10 +6,17 @@ public class Interactable : MonoBehaviour, IClickable
 {
     protected InteractableFSM fsm;
 
+    private Renderer renderer;
+    //[SerializeField] private GameObject light;
+
     //Create FSM
     protected virtual void Awake()
     {
+        renderer = GetComponent<Renderer>();
+        //startingMaterial = renderer.material;
+
         fsm = new InteractableFSM();
+        
     }
 
     void Start()
@@ -30,7 +37,7 @@ public class Interactable : MonoBehaviour, IClickable
         fsm.UpdateState();
     }
 
-    //Go to highlighted state, called when player is looking at an interactable object
+    //Go to highlighted state, called from PlayerLook when player is looking at an interactable object
     public void Highlight()
     {
         if (fsm.CurrentStateType==InteractableStateType.Normal)
@@ -39,6 +46,20 @@ public class Interactable : MonoBehaviour, IClickable
         }
         
     }
+    /*
+    public void SetLight(bool highlighted)
+    {
+        if (highlighted)
+        {
+            light.SetActive(true);
+        }
+        else
+        {
+            light.SetActive(false);
+        }
+    }
+
+    */
 
     public virtual void HandleInteraction() {}
 

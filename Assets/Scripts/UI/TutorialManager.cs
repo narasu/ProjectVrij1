@@ -18,6 +18,10 @@ public class TutorialManager : MonoBehaviour
 
     public GameObject wasdText, clickText, eText;
     private Dictionary<Tutorial, GameObject> tutorialText;
+    private Dictionary<Tutorial, bool> textDisplayed;
+    private Tutorial currentKey;
+    private GameObject currentText;
+    
 
     private void Awake()
     {
@@ -27,13 +31,39 @@ public class TutorialManager : MonoBehaviour
         tutorialText.Add(Tutorial.WASD, wasdText);
         tutorialText.Add(Tutorial.Click, clickText);
         tutorialText.Add(Tutorial.E, eText);
+
+        textDisplayed = new Dictionary<Tutorial, bool>();
+        textDisplayed.Add(Tutorial.WASD, false);
+        textDisplayed.Add(Tutorial.Click, false);
+        textDisplayed.Add(Tutorial.E, false);
     }
 
     public void DisplayText(Tutorial key, bool autoHide = false, float hideTimer = 0.0f) 
     {
+        if (textDisplayed[key])
+        {
+            return;
+        }
+
         GameObject txt;
         tutorialText.TryGetValue(key, out txt);
+
+        if (currentText != null)
+        {
+            if (currentText==txt)
+            {
+                return;
+            }
+            foreach(Tutorial t in tutorialText.Keys)
+            {
+                tutorialText[t].SetActive(false);
+            }
+        }
+
         txt.SetActive(true);
+        textDisplayed[key] = true;
+        currentKey = key;
+        currentText = txt;
 
         if (autoHide)
         {
@@ -53,6 +83,7 @@ public class TutorialManager : MonoBehaviour
         GameObject txt;
         tutorialText.TryGetValue(key, out txt);
         txt.SetActive(false);
+        currentText = null;
     }
 
 

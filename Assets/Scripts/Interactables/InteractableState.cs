@@ -41,7 +41,6 @@ public class HighlightedState : InteractableState
     {
         //interactable.spriteRenderer.sprite = interactable.highlightedSprite;
         interactable.GetComponent<CameraProp>()?.EnableText();
-        Debug.Log("yes");
     }
     public override void Update()
     {
@@ -52,8 +51,7 @@ public class HighlightedState : InteractableState
     }
     public override void Exit()
     {
-        interactable.GetComponent<CameraProp>()?.DisableText();
-        Debug.Log("no");
+        
     }
 }
 public class InteractingState : InteractableState

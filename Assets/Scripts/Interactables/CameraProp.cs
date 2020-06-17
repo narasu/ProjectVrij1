@@ -8,13 +8,9 @@ public class CameraProp : Interactable
 
     public void EnableText()
     {
-        TutorialManager.Instance.DisplayText(Tutorial.Click);
+        TutorialManager.Instance.DisplayText(Tutorial.Click, true, 3.0f);
     }
 
-    public void DisableText()
-    {
-        TutorialManager.Instance.HideText(Tutorial.Click);
-    }
 
     public override void HandleInteraction()
     {

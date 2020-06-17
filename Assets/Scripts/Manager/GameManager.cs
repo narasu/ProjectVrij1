@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [Header("UI objects")]
     public GameObject pauseObject;
     public GameObject winMenuObject;
+    public GameObject inGameUI;
+
 
     //[SerializeField] private GameObject[] tutorialText = new GameObject[3];
 

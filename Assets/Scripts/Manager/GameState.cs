@@ -47,6 +47,7 @@ public class PauseState : GameState
     {
         //open pause menu, freeze game, unlock cursor
         GameManager.Instance.pauseObject.SetActive(true);
+        GameManager.Instance.inGameUI.SetActive(false);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -60,6 +61,7 @@ public class PauseState : GameState
     public override void Exit()
     {
         GameManager.Instance.pauseObject.SetActive(false);
+        GameManager.Instance.inGameUI.SetActive(true);
         Time.timeScale = 1f;
     }
 }
