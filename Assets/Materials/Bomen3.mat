@@ -73,7 +73,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_6299A648: {r: 0.63921547, g: 0, b: 1, a: 0}
-    - Color_8C7B90BB: {r: 0.321504, g: 0.06345675, b: 0.5849056, a: 0}
+    - Color_8C7B90BB: {r: 0.32156864, g: 0.062745094, b: 0.58431375, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
