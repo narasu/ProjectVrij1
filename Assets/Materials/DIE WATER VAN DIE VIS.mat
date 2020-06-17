@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: glass
+  m_Name: DIE WATER VAN DIE VIS
   m_Shader: {fileID: -6465566751694194690, guid: 3377c6f3051cb2b46bfe527b21726d5d,
     type: 3}
   m_ShaderKeywords: 
@@ -85,8 +85,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_64DA7B52: {r: 0.22414559, g: 0.33084506, b: 0.6509434, a: 0}
-    - Color_F57AD1BE: {r: 0.43996567, g: 0.18632075, b: 0.5, a: 0}
+    - Color_64DA7B52: {r: 0.019649675, g: 0, b: 0.4433962, a: 0}
+    - Color_F57AD1BE: {r: 0, g: 0.002023769, b: 0.5660378, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
