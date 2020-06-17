@@ -262,7 +262,7 @@ MeshCollider:
   m_GameObject: {fileID: 70132626}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -813,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 532038436}
     - target: {fileID: 2024805616, guid: 33017715b5a0cd84ba910bd6a6704305, type: 3}
       propertyPath: unlockDelay
-      value: 15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1475205795519729092, guid: 33017715b5a0cd84ba910bd6a6704305,
         type: 3}
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   SoundEvent: event:/Telephone
   playOnAwake: 1
   repeat: 1
-  repeatInterval: 1.85
+  repeatInterval: 2.01
   allowFadeOut: 0
   parameterName: WorldType
 --- !u!1001 &774675850
@@ -1974,6 +1974,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932160291507678204, guid: e20b27c762b7703499238b6672194533,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8663603173184450376, guid: e20b27c762b7703499238b6672194533,
         type: 3}
