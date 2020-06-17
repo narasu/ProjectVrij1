@@ -23,6 +23,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] [Range(0, 150)] private float mouseSensitivity = 100f;
 #pragma warning restore 0649
 
+    [HideInInspector] public Camera camera;
     private float xAxisClamp;
 
     private Interactable target;
@@ -31,6 +32,7 @@ public class PlayerLook : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        camera = GetComponent<Camera>();
         LockCursor();
     }
 

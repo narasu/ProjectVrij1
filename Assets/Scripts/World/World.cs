@@ -117,12 +117,14 @@ public class World : MonoBehaviour
         {
             GotoAlt();
             worldState = 1;
+            PlayerLook.Instance.camera.fieldOfView = 65;
             return;
         }
         if (worldState == 1)
         {
             GotoMain();
             worldState = 0;
+            PlayerLook.Instance.camera.fieldOfView = 60;
             return;
         }
     }
