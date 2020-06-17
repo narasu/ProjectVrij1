@@ -70,9 +70,11 @@ public class WinState : GameState
     public override void Enter()
     {
         GameManager.Instance.winMenuObject.SetActive(true);
+        GameManager.Instance.inGameUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f;
+        Debug.Log("entering win state");
     }
     public override void Update()
     {
@@ -81,6 +83,8 @@ public class WinState : GameState
     public override void Exit()
     {
         GameManager.Instance.winMenuObject.SetActive(false);
+        GameManager.Instance.inGameUI.SetActive(true);
         Time.timeScale = 1f;
+        Debug.Log("Exiting win state");
     }
 }

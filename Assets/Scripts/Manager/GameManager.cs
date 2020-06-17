@@ -46,8 +46,9 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if (fsm.CurrentStateType == GameStateType.Pause)
+        if (fsm.CurrentStateType == GameStateType.Pause || fsm.CurrentStateType == GameStateType.Win)
         {
+            Debug.Log("Handling pause");
             IsPaused = false;
             Player.Instance.enabled = true;
             PlayerLook.Instance.enabled = true;
@@ -79,6 +80,10 @@ public class GameManager : MonoBehaviour
     }
     public void GotoWin()
     {
+        IsPaused = true;
+        Player.Instance.enabled = false;
+        PlayerLook.Instance.enabled = false;
+
         fsm.GotoState(GameStateType.Win);
     }
 
